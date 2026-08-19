@@ -481,6 +481,14 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   color:var(--gold); margin-top:20px;
   opacity:0; animation: heroFadeIn 1.5s var(--ease) 0.4s forwards;
 }
+/* Match gold tagline width to the wordmark (Lima symmetry) */
+.hero .hero__tagline {
+  width: min(72vw, 420px);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  letter-spacing: 0.55em;
+}
 .hero__line {
   width:1px; height:60px;
   background:linear-gradient(180deg, var(--gold), transparent);
@@ -637,6 +645,8 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 .dish-card__desc { font-size:0.8rem; color:var(--white-soft); opacity:0; transition: opacity 0.5s ease; }
 .dish-card:hover .dish-card__desc { opacity:0.8; }
 .dish-card__price { font-family:var(--font-heading); font-size:1.1rem; color:var(--gold); margin-top:8px; }
+.dish-card--photo-only .dish-card__content,
+.dish-card--photo-only .dish-card__overlay { display: none; }
 
 .menu-preview__cta { text-align:center; margin-top:64px; }
 
@@ -1267,6 +1277,18 @@ a.menu-list__item { cursor:pointer; }
 .page-hero__content .hero__logo-img { max-height: 72px; }
 .footer__top-tagline { font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-muted); }
 .footer__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px; margin-bottom:80px; }
+.footer__grid--3 { grid-template-columns:repeat(3,1fr); }
+.footer__ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+.footer__ig svg { flex-shrink: 0; }
 .footer__col h4 {
   font-family:var(--font-body); font-size:0.65rem;
   text-transform:uppercase; letter-spacing:0.25em;
@@ -1942,6 +1964,7 @@ a.menu-list__item { cursor:pointer; }
   .split-panel__content { padding: 24px 16px; }
   .split-panel__tagline { font-size: 0.62rem !important; letter-spacing: 0.06em; margin-bottom: 10px !important; }
   .split-panel:has(.logo-img--sura) .split-panel__tagline { letter-spacing: 0.6em; }
+  .hero .hero__tagline { font-size: 0.68rem; letter-spacing: 0.12em; }
   .split-panel__enter { margin-top: 16px; opacity: 0.75; transform: none; }
   .split-screen__tagline { bottom: max(16px, env(safe-area-inset-bottom)); }
   .split-screen__scroll {
