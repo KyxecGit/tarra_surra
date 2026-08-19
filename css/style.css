@@ -303,11 +303,11 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   position:absolute; bottom: max(28px, env(safe-area-inset-bottom));
   left:50%;
   transform:translateX(-50%); z-index:10; text-align:center;
-  width: min(92%, 420px);
+  width: min(96%, 760px);
   pointer-events: none;
 }
 .split-screen__tagline span {
-  font-size:0.65rem; letter-spacing:0.3em;
+  font-size: 0.78rem; letter-spacing: 0.12em;
   text-transform:uppercase; color:var(--gray);
   display: block;
 }
@@ -401,8 +401,8 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 .navbar__links--right { margin-left:auto; }
 
 .navbar__link {
-  font-size: 0.82rem; font-weight:400;
-  text-transform:uppercase; letter-spacing: 0.16em;
+  font-size: 0.95rem; font-weight:400;
+  text-transform:uppercase; letter-spacing: 0.1em;
   color:var(--white); position:relative; padding:6px 0;
   white-space: nowrap;
 }
@@ -415,9 +415,9 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 .navbar__link:hover::after { width:100%; }
 
 .navbar__reserve {
-  font-size: 0.72rem;
-  padding: 10px 18px;
-  letter-spacing: 0.12em;
+  font-size: 0.82rem;
+  padding: 10px 16px;
+  letter-spacing: 0.08em;
   white-space: nowrap;
 }
 
@@ -492,7 +492,17 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  letter-spacing: 0.55em;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+}
+.sura-hero .hero__tagline {
+  width: min(90vw, 560px);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
 }
 .hero__line {
   width:1px; height:60px;
@@ -754,6 +764,14 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 }
 .chef-section__text p { margin-bottom: 20px; max-width: 480px; }
 .chef-section__text .btn { margin-top: 28px; }
+.chef-section__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 8px;
+}
+.chef-section__text .chef-section__actions .btn { margin-top: 0; }
 
 /* ============================================
    ATMOSPHERE MARQUEE
@@ -1289,9 +1307,9 @@ a.menu-list__item { cursor:pointer; }
   gap: 8px;
   margin-top: 12px;
   color: var(--gold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: 0.78rem;
 }
 .footer__ig svg { flex-shrink: 0; }
 .footer__col h4 {
@@ -1436,18 +1454,20 @@ a.menu-list__item { cursor:pointer; }
   font-family: var(--font-body);
   font-size: 0.72rem;
   width: min(86%, 420px);
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 16px;
   text-align: center;
-  letter-spacing: 0.73em;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
-  margin: 0 auto 16px;
   opacity: 0.9;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
-/* Sura wordmark is wider; shorter tagline needs its own tracking to match */
+/* letter-spacing adds space after the last glyph; indent restores optical center */
 .split-panel:has(.logo-img--sura) .split-panel__tagline {
-  letter-spacing: 0.57em;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
 }
 .brand-hero__bg {
   position: absolute; inset: 0;
@@ -1906,7 +1926,7 @@ a.menu-list__item { cursor:pointer; }
 
 /* Navbar denser links for brand nav */
 .navbar__links { gap: clamp(10px, 1.4vw, 22px); }
-.navbar__link { font-size: 0.82rem; letter-spacing: 0.16em; }
+.navbar__link { font-size: 0.95rem; letter-spacing: 0.1em; }
 
 /* Shared logo utility */
 .logo-img {
@@ -1967,9 +1987,10 @@ a.menu-list__item { cursor:pointer; }
   .split-panel__logo-img.logo-img--tarra { height: 90%; }
   .split-panel__logo-img.logo-img--sura { height: 64%; }
   .split-panel__content { padding: 24px 16px; }
-  .split-panel__tagline { font-size: 0.62rem !important; letter-spacing: 0.06em; margin-bottom: 10px !important; }
-  .split-panel:has(.logo-img--sura) .split-panel__tagline { letter-spacing: 0.6em; }
-  .hero .hero__tagline { font-size: 0.68rem; letter-spacing: 0.12em; }
+  .split-panel__tagline { font-size: 0.58rem !important; letter-spacing: 0.08em !important; text-indent: 0.08em !important; margin-bottom: 10px !important; white-space: nowrap; }
+  .split-panel:has(.logo-img--sura) .split-panel__tagline { letter-spacing: 0.1em !important; text-indent: 0.1em !important; }
+  .hero .hero__tagline { font-size: 0.68rem; letter-spacing: 0.12em; text-indent: 0.12em; }
+  .sura-hero .hero__tagline { font-size: 0.58rem; letter-spacing: 0.08em; text-indent: 0.08em; }
   .split-panel__enter { margin-top: 16px; opacity: 0.75; transform: none; }
   .split-screen__tagline { bottom: max(16px, env(safe-area-inset-bottom)); }
   .split-screen__scroll {
@@ -2089,7 +2110,7 @@ a.menu-list__item { cursor:pointer; }
   .signatures__grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
   .home-gallery__row { grid-template-columns: 1fr; }
   .chef-awards__grid { grid-template-columns: 1fr; }
-  .split-screen__tagline span { font-size: 0.55rem; letter-spacing: 0.18em; }
+  .split-screen__tagline span { font-size: 0.58rem; letter-spacing: 0.04em; }
   h1 { letter-spacing: 0.04em; }
   h2 { letter-spacing: 0.03em; }
 }
