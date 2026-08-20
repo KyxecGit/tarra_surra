@@ -237,6 +237,9 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 .brand-lockup--hero {
   margin-bottom: 0;
 }
+.brand-lockup--hero .brand-lockup__tagline {
+  margin-top: 24px;
+}
 .brand-lockup__logo {
   display: block;
   width: auto;
@@ -256,7 +259,7 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   height: clamp(42px, 7.5vw, 72px);
 }
 .brand-lockup__tagline {
-  margin: 10px 0 0;
+  margin: 22px 0 0;
   box-sizing: border-box;
   align-self: flex-start;
   white-space: nowrap;
@@ -817,6 +820,14 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   filter: brightness(1) saturate(1);
   transform: translate(16px, -14px);
 }
+.chef-section__text { container-type: inline-size; }
+#platform-heading {
+  white-space: nowrap;
+  font-size: clamp(0.95rem, 4.4cqi, 1.55rem);
+  letter-spacing: 0.045em;
+  line-height: 1.2;
+  max-width: 100%;
+}
 .chef-section__text .chef-subtitle {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -831,7 +842,7 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   flex-wrap: wrap;
   gap: 14px;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 28px;
 }
 .chef-section__text .chef-section__actions .btn { margin-top: 0; }
 
@@ -1894,6 +1905,7 @@ a.experience-card { text-decoration: none; color: inherit; }
   object-fit: cover;
   object-position: center 18%;
 }
+.team-card__photo--michael { object-position: center 28%; }
 .team-card:hover {
   border-color: rgba(201,169,110,0.18);
   transform: translateY(-4px);
@@ -2165,6 +2177,11 @@ a.experience-card { text-decoration: none; color: inherit; }
   .day-night__phase { padding: 32px 24px; }
   .team-grid { max-width: 100%; }
   .team-card { padding: 28px 22px; }
+  .team-card--photo { padding-top: 0; }
+  .team-card__photo {
+    width: calc(100% + 44px);
+    margin: 0 -22px 20px;
+  }
   .opentable-block { padding: 28px 20px; }
   .events-teaser { padding: 100px 0; }
   .events-teaser__pills { gap: 8px; }
