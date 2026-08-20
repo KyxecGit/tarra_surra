@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Brand lockup: tagline width matches wordmark ──
+  // ── Brand lockup: tagline sits under the wordmark, same width, never clipped ──
   const fitLockups = () => {
     document.querySelectorAll('.brand-lockup').forEach((box) => {
       const img = box.querySelector('.brand-lockup__logo');
@@ -80,35 +80,63 @@ document.addEventListener('DOMContentLoaded', () => {
         if (target < 40) return;
         const cs = window.getComputedStyle(line);
         const text = (line.textContent || '').replace(/\s+/g, ' ').trim();
-        const probe = document.createElement('span');
-        probe.textContent = text;
-        probe.style.cssText = [
-          'position:absolute',
-          'left:-9999px',
-          'white-space:nowrap',
-          `font-size:${cs.fontSize}`,
-          `font-family:${cs.fontFamily}`,
-          `font-weight:${cs.fontWeight}`,
-          'letter-spacing:0px',
-          'text-transform:uppercase'
-        ].join(';');
-        document.body.appendChild(probe);
-        const base = probe.getBoundingClientRect().width;
-        probe.remove();
-        const spacing = (target - base) / Math.max(text.length, 1);
+        const measure = (fsPx) => {
+          const probe = document.createElement('span');
+          probe.textContent = text;
+          probe.style.cssText = [
+            'position:absolute',
+            'left:-9999px',
+            'white-space:nowrap',
+            `font-size:${fsPx}px`,
+            `font-family:${cs.fontFamily}`,
+            `font-weight:${cs.fontWeight}`,
+            'letter-spacing:0.12em',
+            'text-transform:uppercase'
+          ].join(';');
+          document.body.appendChild(probe);
+          const w = probe.getBoundingClientRect().width;
+          probe.remove();
+          return w;
+        };
+        const minPx = 8;
+        const maxPx = 16;
+        line.style.letterSpacing = '0.12em';
         line.style.wordSpacing = '0px';
-        line.style.letterSpacing = `${Math.max(spacing, 0)}px`;
+        line.style.textAlign = 'center';
+        line.style.overflow = 'visible';
+        if (measure(minPx) > target) {
+          line.style.fontSize = `${minPx}px`;
+          line.style.width = 'max-content';
+          return;
+        }
+        let lo = minPx;
+        let hi = maxPx;
+        let best = minPx;
+        for (let i = 0; i < 14; i++) {
+          const mid = (lo + hi) / 2;
+          if (measure(mid) <= target) {
+            best = mid;
+            lo = mid;
+          } else {
+            hi = mid;
+          }
+        }
+        line.style.fontSize = `${best}px`;
         line.style.width = `${target}px`;
       };
       if (img.complete && img.naturalWidth) apply();
       else img.addEventListener('load', apply, { once: true });
     });
   };
-  fitLockups();
-  window.addEventListener('resize', fitLockups);
-  window.addEventListener('load', fitLockups);
+  const scheduleFit = () => requestAnimationFrame(() => requestAnimationFrame(fitLockups));
+  scheduleFit();
+  window.addEventListener('resize', scheduleFit);
+  window.addEventListener('load', scheduleFit);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', scheduleFit);
+  }
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(fitLockups);
+    document.fonts.ready.then(scheduleFit);
   }
 
   // ── Split screen interaction (desktop hover only) ──

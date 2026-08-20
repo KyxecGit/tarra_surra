@@ -229,7 +229,7 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 .brand-lockup {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   width: max-content;
   max-width: min(86%, 420px);
   margin: 0 auto 12px;
@@ -255,18 +255,24 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   height: clamp(42px, 7.5vw, 72px);
 }
 .brand-lockup__tagline {
-  margin: 14px 0 0;
-  width: 100%;
+  margin: 12px 0 0;
   box-sizing: border-box;
-  overflow: hidden;
   white-space: nowrap;
-  text-align: left;
+  text-align: center;
+  overflow: visible;
   font-family: var(--font-body);
-  font-size: clamp(0.52rem, 1.15vw, 0.7rem);
+  font-size: clamp(0.55rem, 1.2vw, 0.72rem);
   text-transform: uppercase;
   color: var(--gold);
-  letter-spacing: 0;
+  letter-spacing: 0.12em;
   opacity: 0.92;
+}
+.brand-lockup .split-panel__divider-line {
+  margin-top: 14px;
+  margin-bottom: 16px;
+}
+.brand-lockup .split-panel__label {
+  margin: 0;
 }
 .split-panel__logo-text {
   font-family:var(--font-display);
