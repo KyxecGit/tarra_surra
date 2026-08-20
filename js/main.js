@@ -69,6 +69,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Brand lockup: tagline width matches wordmark ──
+  const fitLockups = () => {
+    document.querySelectorAll('.brand-lockup').forEach((box) => {
+      const img = box.querySelector('.brand-lockup__logo');
+      const line = box.querySelector('.brand-lockup__tagline');
+      if (!img || !line) return;
+      const apply = () => {
+        const target = img.getBoundingClientRect().width;
+        if (target < 40) return;
+        const cs = window.getComputedStyle(line);
+        const text = (line.textContent || '').replace(/\s+/g, ' ').trim();
+        const probe = document.createElement('span');
+        probe.textContent = text;
+        probe.style.cssText = [
+          'position:absolute',
+          'left:-9999px',
+          'white-space:nowrap',
+          `font-size:${cs.fontSize}`,
+          `font-family:${cs.fontFamily}`,
+          `font-weight:${cs.fontWeight}`,
+          'letter-spacing:0px',
+          'text-transform:uppercase'
+        ].join(';');
+        document.body.appendChild(probe);
+        const base = probe.getBoundingClientRect().width;
+        probe.remove();
+        const spacing = (target - base) / Math.max(text.length, 1);
+        line.style.wordSpacing = '0px';
+        line.style.letterSpacing = `${Math.max(spacing, 0)}px`;
+        line.style.width = `${target}px`;
+      };
+      if (img.complete && img.naturalWidth) apply();
+      else img.addEventListener('load', apply, { once: true });
+    });
+  };
+  fitLockups();
+  window.addEventListener('resize', fitLockups);
+  window.addEventListener('load', fitLockups);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fitLockups);
+  }
+
   // ── Split screen interaction (desktop hover only) ──
   const splitPanels = document.querySelectorAll('.split-panel');
   if (splitPanels.length && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {

@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu — Tarra | Chicago</title>
-  <meta name="description" content="The Tarra menu — contemporary Thai dinner in Chicago. Menu coming soon.">
-  <link rel="canonical" href="https://www.tarrachicago.com/menu.html">
+  <title>Meet the Team — Tarra &amp; Sura</title>
+  <meta name="description" content="Behind the scenes at Tarra and Sura — a brief introduction to the leadership.">
+  <link rel="canonical" href="https://www.tarrachicago.com/team.html">
   <link rel="icon" type="image/png" href="images/logos/tarra-emblem-white.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="preloader" role="status" aria-label="Loading">
-    <img src="images/logos/tarra-white-logo.png" alt="Tarra" class="preloader__logo logo-img logo-img--tarra">
+  <div class="preloader">
+    <img src="images/logos/tarra-emblem-white.png" alt="Tarra &amp; Sura" class="preloader__logo logo-img logo-img--emblem">
   </div>
   <nav class="navbar scrolled" aria-label="Main navigation">
     <div class="navbar__inner">
@@ -27,7 +27,7 @@
       <div class="navbar__links navbar__links--right">
         <a href="gallery.html" class="navbar__link">Gallery</a>
         <a href="team.html" class="navbar__link">Team</a>
-        <a href="https://www.opentable.com/r/tarra-chicago?ref=1068" class="btn navbar__reserve" target="_blank" rel="noopener noreferrer">Reserve a Table</a>
+        <a href="reservation.html" class="btn navbar__reserve">Reserve a Table</a>
       </div>
       <button class="navbar__hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -37,27 +37,36 @@
       <a href="sura.html">Sura</a>
       <a href="gallery.html">Gallery</a>
       <a href="team.html">Team</a>
-      <a href="https://www.opentable.com/r/tarra-chicago?ref=1068" target="_blank" rel="noopener noreferrer">Reserve a Table</a>
+      <a href="reservation.html">Reserve a Table</a>
     </div>
   </nav>
 
-  <section class="page-hero" id="main-content">
-    <div class="page-hero__bg" style="background-image: url('images/tarra/tarra-interior-6.jpg');"></div>
-    <div class="page-hero__overlay"></div>
-    <div class="page-hero__content">
-      <h1>The Menu</h1>
-      <div class="gold-line-center"></div>
-      <p style="text-transform:uppercase; letter-spacing:0.18em;">Menu coming soon</p>
-    </div>
-  </section>
-
-  <section class="reservation-cta">
-    <div class="reservation-cta__bg" style="background-image: url('images/tarra/tarra-interior-8.jpg');"></div>
-    <div class="reservation-cta__content reveal">
-      <span class="section-subtitle">Dine With Us</span>
-      <h2>Reserve Your Table</h2>
-      <div class="gold-line-center"></div>
-      <a href="https://www.opentable.com/r/tarra-chicago?ref=1068" class="btn btn-filled btn-lg" target="_blank" rel="noopener noreferrer">Reserve Tarra</a>
+  <section class="team-section" id="main-content" aria-labelledby="team-heading" style="padding-top:140px;">
+    <div class="container">
+      <div class="team-section__header reveal">
+        <span class="section-subtitle">Meet the Team</span>
+        <h2 id="team-heading">Behind the Scenes</h2>
+        <div class="gold-line-center" aria-hidden="true"></div>
+        <p>A brief introduction to the leadership</p>
+      </div>
+      <div class="team-grid">
+        <article class="team-card reveal stagger-1">
+          <p class="team-card__role">Kylin Hospitality Group</p>
+          <h3>Michael</h3>
+        </article>
+        <article class="team-card team-card--photo reveal stagger-2">
+          <img src="images/team/namo.jpg" alt="Chef Namo" class="team-card__photo">
+          <p class="team-card__role">Culinary</p>
+          <h3>Chef Namo</h3>
+          <a href="chef.html" class="btn">Profile</a>
+        </article>
+        <article class="team-card team-card--photo reveal stagger-3">
+          <img src="images/team/robert.jpg" alt="Robert Shamblin III" class="team-card__photo">
+          <p class="team-card__role">Beverage Director</p>
+          <h3>Robert</h3>
+          <a href="robert.html" class="btn">Profile</a>
+        </article>
+      </div>
     </div>
   </section>
 
