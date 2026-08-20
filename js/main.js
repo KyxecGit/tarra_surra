@@ -69,60 +69,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Brand lockup: tagline sits under the wordmark, same width, never clipped ──
+  // ── Brand lockup: tagline flush with optical letters, never wider, never clipped ──
   const fitLockups = () => {
     document.querySelectorAll('.brand-lockup').forEach((box) => {
       const img = box.querySelector('.brand-lockup__logo');
       const line = box.querySelector('.brand-lockup__tagline');
       if (!img || !line) return;
       const apply = () => {
-        const target = img.getBoundingClientRect().width;
-        if (target < 40) return;
-        const cs = window.getComputedStyle(line);
-        const text = (line.textContent || '').replace(/\s+/g, ' ').trim();
-        const measure = (fsPx) => {
-          const probe = document.createElement('span');
-          probe.textContent = text;
-          probe.style.cssText = [
-            'position:absolute',
-            'left:-9999px',
-            'white-space:nowrap',
-            `font-size:${fsPx}px`,
-            `font-family:${cs.fontFamily}`,
-            `font-weight:${cs.fontWeight}`,
-            'letter-spacing:0.12em',
-            'text-transform:uppercase'
-          ].join(';');
-          document.body.appendChild(probe);
-          const w = probe.getBoundingClientRect().width;
-          probe.remove();
-          return w;
-        };
-        const minPx = 8;
-        const maxPx = 16;
-        line.style.letterSpacing = '0.12em';
+        const imgH = img.getBoundingClientRect().height;
+        const imgW = img.naturalHeight
+          ? imgH * (img.naturalWidth / img.naturalHeight)
+          : img.getBoundingClientRect().width;
+        if (imgW < 40) return;
+        box.style.width = `${imgW}px`;
+
+        const isSura = img.classList.contains('brand-lockup__logo--sura');
+        // Tarra T-swash is ink (~11.2% of PNG). Tagline matches the letter block, not the swash.
+        const leftFrac = isSura ? 0 : 0.112;
+        const rightFrac = 0;
+        const target = imgW * (1 - leftFrac - rightFrac);
+        box.style.setProperty('--optical-shift', `${((leftFrac - rightFrac) / 2) * imgW}px`);
+
+        let inner = line.querySelector('.brand-lockup__fit');
+        if (!inner) {
+          inner = document.createElement('span');
+          inner.className = 'brand-lockup__fit';
+          while (line.firstChild) inner.appendChild(line.firstChild);
+          line.appendChild(inner);
+        }
+
+        const fontPx = Math.min(12.5, Math.max(9, imgW * 0.058));
+        const track = 0.14;
+        line.style.fontSize = `${fontPx}px`;
+        line.style.letterSpacing = `${track}em`;
         line.style.wordSpacing = '0px';
-        line.style.textAlign = 'center';
-        line.style.overflow = 'visible';
-        if (measure(minPx) > target) {
-          line.style.fontSize = `${minPx}px`;
-          line.style.width = 'max-content';
-          return;
-        }
-        let lo = minPx;
-        let hi = maxPx;
-        let best = minPx;
-        for (let i = 0; i < 14; i++) {
-          const mid = (lo + hi) / 2;
-          if (measure(mid) <= target) {
-            best = mid;
-            lo = mid;
-          } else {
-            hi = mid;
-          }
-        }
-        line.style.fontSize = `${best}px`;
+        line.style.textIndent = '0px';
+        line.style.padding = '0';
+        line.style.boxSizing = 'border-box';
+        line.style.whiteSpace = 'nowrap';
+        line.style.textAlign = 'left';
+        line.style.overflow = 'hidden';
+        line.style.display = 'block';
         line.style.width = `${target}px`;
+        line.style.marginLeft = `${imgW * leftFrac}px`;
+        line.style.marginRight = `${imgW * rightFrac}px`;
+
+        inner.style.display = 'block';
+        inner.style.width = 'max-content';
+        inner.style.whiteSpace = 'nowrap';
+        inner.style.letterSpacing = `${track}em`;
+        inner.style.transformOrigin = 'left top';
+        inner.style.transform = 'none';
+
+        const glyphWidth = () => inner.getBoundingClientRect().width - parseFloat(getComputedStyle(inner).letterSpacing || '0');
+        const natural = glyphWidth();
+        if (natural < target) {
+          const chars = Math.max(2, (inner.textContent || '').trim().length);
+          const extra = (target - natural) / (chars - 1);
+          inner.style.letterSpacing = `${track + extra / fontPx}em`;
+          inner.style.transform = 'none';
+          line.style.height = `${fontPx * 1.2}px`;
+        } else {
+          const scale = target / Math.max(1, natural);
+          inner.style.transform = `scale(${scale})`;
+          line.style.height = `${fontPx * 1.2 * scale}px`;
+        }
       };
       if (img.complete && img.naturalWidth) apply();
       else img.addEventListener('load', apply, { once: true });

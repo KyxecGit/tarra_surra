@@ -231,17 +231,18 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   flex-direction: column;
   align-items: center;
   width: max-content;
-  max-width: min(86%, 420px);
+  max-width: none;
   margin: 0 auto 12px;
 }
 .brand-lockup--hero {
-  max-width: min(78vw, 460px);
   margin-bottom: 0;
 }
 .brand-lockup__logo {
   display: block;
   width: auto;
+  max-width: none;
   height: clamp(72px, 11vw, 128px);
+  flex-shrink: 0;
   filter: drop-shadow(0 4px 30px rgba(0,0,0,0.5));
 }
 .brand-lockup__logo--sura {
@@ -255,24 +256,34 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   height: clamp(42px, 7.5vw, 72px);
 }
 .brand-lockup__tagline {
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   box-sizing: border-box;
+  align-self: flex-start;
   white-space: nowrap;
   text-align: center;
-  overflow: visible;
+  overflow: hidden;
   font-family: var(--font-body);
-  font-size: clamp(0.55rem, 1.2vw, 0.72rem);
+  font-size: 0.7rem;
+  line-height: 1.2;
   text-transform: uppercase;
   color: var(--gold);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   opacity: 0.92;
+}
+.brand-lockup__fit {
+  display: block;
+  width: max-content;
+  white-space: nowrap;
+  transform-origin: left top;
 }
 .brand-lockup .split-panel__divider-line {
   margin-top: 14px;
   margin-bottom: 16px;
+  transform: translateX(var(--optical-shift, 0px));
 }
 .brand-lockup .split-panel__label {
   margin: 0;
+  transform: translateX(var(--optical-shift, 0px));
 }
 .split-panel__logo-text {
   font-family:var(--font-display);
@@ -2058,12 +2069,11 @@ a.experience-card { text-decoration: none; color: inherit; }
   .split-panel__logo-img.logo-img--tarra { height: 90%; }
   .split-panel__logo-img.logo-img--sura { height: 64%; }
   .split-panel__content { padding: 24px 16px; }
-  .brand-lockup { max-width: min(82%, 320px); }
+  .brand-lockup { max-width: none; }
   .brand-lockup__logo { height: clamp(64px, 16vw, 96px); }
   .brand-lockup__logo--sura { height: clamp(34px, 9vw, 52px); }
   .brand-lockup--hero .brand-lockup__logo { height: clamp(70px, 18vw, 110px); }
   .brand-lockup--hero .brand-lockup__logo--sura { height: clamp(36px, 10vw, 56px); }
-  .brand-lockup__tagline { font-size: 0.5rem; }
   .hero .hero__tagline { font-size: 0.68rem; letter-spacing: 0.12em; text-indent: 0.12em; }
   .sura-hero .hero__tagline { font-size: 0.58rem; letter-spacing: 0.08em; text-indent: 0.08em; }
   .split-panel__enter { margin-top: 16px; opacity: 0.75; transform: none; }
