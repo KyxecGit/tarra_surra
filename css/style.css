@@ -716,12 +716,12 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 }
 .dish-card__content {
   position:absolute; bottom:0; left:0; right:0;
-  padding:32px; z-index:2;
+  padding:32px; z-index:3;
   transform:translateY(8px);
   transition: transform 0.5s var(--ease);
 }
 .dish-card:hover .dish-card__content { transform:translateY(0); }
-.dish-card__name { font-family:var(--font-heading); font-size:1.5rem; color:var(--white); margin-bottom:6px; }
+.dish-card__name { font-family:var(--font-heading); font-size:1.5rem; color:var(--white); margin-bottom:6px; text-shadow: 0 1px 14px rgba(0,0,0,0.55); }
 .dish-card__desc { font-size:0.8rem; color:var(--white-soft); opacity:0; transition: opacity 0.5s ease; }
 .dish-card:hover .dish-card__desc { opacity:0.8; }
 .dish-card__price { font-family:var(--font-heading); font-size:1.1rem; color:var(--gold); margin-top:8px; }
@@ -847,16 +847,77 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 .chef-section__text .chef-section__actions .btn { margin-top: 0; }
 
 /* ============================================
-   ATMOSPHERE MARQUEE
+   ATMOSPHERE CAROUSEL
    ============================================ */
-.atmosphere { padding:var(--section-pad); background:var(--bg-alt); overflow:hidden; }
+.atmosphere { padding:var(--section-pad); background:var(--bg-alt); }
 .atmosphere__header { text-align:center; margin-bottom:60px; }
-.atmosphere__marquee-wrapper { overflow:hidden; width:100%; }
-.atmosphere__marquee { display:flex; gap:16px; animation: marquee 30s linear infinite; }
-.atmosphere__item { min-width:400px; height:300px; overflow:hidden; flex-shrink:0; position:relative; }
-.atmosphere__item img { width:100%; height:100%; object-fit:cover; filter:brightness(0.7); transition: filter 0.5s ease; }
-.atmosphere__item:hover img { filter:brightness(0.9); }
-@keyframes marquee { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+.atmosphere__carousel { position: relative; }
+.atmosphere__track {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.atmosphere__track::-webkit-scrollbar { display: none; }
+.atmosphere__item {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: min(70vw, 480px);
+  height: 300px;
+  margin-right: 16px;
+  overflow: hidden;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.atmosphere__item:first-child { margin-left: 24px; }
+.atmosphere__item:last-child { margin-right: 24px; }
+.atmosphere__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.85);
+  transition: filter 0.5s ease;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+.atmosphere__item:hover img { filter: brightness(0.95); }
+.atmosphere__nav {
+  display: none;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--gold);
+  background: rgba(6,6,6,0.55);
+  color: var(--gold);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1;
+  padding: 0;
+  transform: translateY(-50%);
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+.atmosphere__nav:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+.atmosphere__nav--prev { left: 16px; }
+.atmosphere__nav--next { right: 16px; }
+@media (hover: hover) and (pointer: fine) {
+  .atmosphere__nav { display: flex; }
+}
 
 /* ============================================
    TESTIMONIALS
@@ -926,27 +987,24 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 .cocktail-card__img {
   width:100%; height:100%; object-fit:cover;
   transition: transform 0.7s var(--ease), filter 0.5s ease;
-  filter:brightness(0.6);
+  filter:brightness(0.95);
 }
-.cocktail-card:hover .cocktail-card__img { transform:scale(1.06); filter:brightness(0.8); }
+.cocktail-card:hover .cocktail-card__img { transform:scale(1.06); filter:brightness(1); }
 .cocktail-card__overlay {
   position:absolute; inset:0;
-  background:linear-gradient(180deg, transparent 50%, rgba(6,6,6,0.9) 100%);
+  background:linear-gradient(180deg, transparent 62%, rgba(6,6,6,0.55) 100%);
   z-index:1;
 }
-/* Radial vignette on cocktail photos */
 .cocktail-card::after {
   content: '';
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background: radial-gradient(ellipse at center,
-    transparent 25%,
-    rgba(6,6,6,0.38) 60%,
-    rgba(6,6,6,0.80) 82%,
-    rgba(6,6,6,0.95) 100%
+    transparent 55%,
+    rgba(6,6,6,0.18) 100%
   );
 }
-.cocktail-card__content { position:absolute; bottom:0; left:0; right:0; padding:28px; z-index:2; }
-.cocktail-card__name { font-family:var(--font-heading); font-size:1.3rem; color:var(--white); }
+.cocktail-card__content { position:absolute; bottom:0; left:0; right:0; padding:28px; z-index:3; }
+.cocktail-card__name { font-family:var(--font-heading); font-size:1.3rem; color:var(--white); text-shadow: 0 1px 14px rgba(0,0,0,0.55); }
 .cocktail-card__price { color:var(--gold); font-size:0.9rem; margin-top:4px; }
 .cocktail-card__desc { font-size:0.8rem; color:var(--white-soft); opacity:0; margin-top:8px; transition: opacity 0.4s ease; }
 .cocktail-card:hover .cocktail-card__desc { opacity:0.7; }
@@ -986,28 +1044,6 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 .page-hero__content p { margin:0 auto; max-width:540px; }
 .page-hero__actions { margin-top: 36px; }
 .page-hero--short { height:55vh; min-height:400px; }
-
-.menu-pdf { padding: 0 0 120px; }
-.menu-pdf__frame {
-  max-width: 1180px;
-  margin: 0 auto;
-  background: #05051a;
-  border: 1px solid rgba(201,169,110,0.12);
-}
-.menu-pdf__frame object,
-.menu-pdf__frame iframe {
-  display: block;
-  width: 100%;
-  height: 85vh;
-  min-height: 640px;
-  border: 0;
-  background: #05051a;
-}
-.menu-pdf__frame p {
-  padding: 48px 24px;
-  text-align: center;
-}
-.menu-pdf__frame a { color: var(--gold); }
 
 .menu-list { padding:var(--section-pad); }
 .menu-list__intro { text-align:center; margin-bottom:80px; }
@@ -1409,6 +1445,13 @@ a.menu-list__item { cursor:pointer; }
   font-size: 0.78rem;
 }
 .footer__ig svg { flex-shrink: 0; }
+.footer__join { margin-top: 14px; }
+.footer__join a {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
 .footer__col h4 {
   font-family:var(--font-body); font-size:0.65rem;
   text-transform:uppercase; letter-spacing:0.25em;
@@ -1464,20 +1507,6 @@ a.menu-list__item { cursor:pointer; }
   opacity: 0.7; transition: opacity 0.5s ease;
 }
 .gallery-page__item:hover::after { opacity: 0.3; }
-
-/* ============================================
-   ATMOSPHERE MARQUEE ITEM VIGNETTE
-   ============================================ */
-.atmosphere__item::after {
-  content: '';
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: radial-gradient(ellipse at center,
-    transparent 25%,
-    rgba(6,6,6,0.30) 60%,
-    rgba(6,6,6,0.72) 84%,
-    rgba(6,6,6,0.95) 100%
-  );
-}
 
 /* ============================================
    COOKIE CONSENT BANNER
@@ -2185,7 +2214,10 @@ a.experience-card { text-decoration: none; color: inherit; }
   .footer__top { margin-bottom: 48px; }
   .gallery-grid__masonry { columns:1; padding:0 24px; }
   .form-row { grid-template-columns:1fr; }
-  .atmosphere__item { min-width:260px; height:200px; }
+  .atmosphere__item { width: 78vw; height: 220px; margin-right: 12px; }
+  .atmosphere__item:first-child { margin-left: 16px; }
+  .atmosphere__item:last-child { margin-right: 16px; }
+  .atmosphere__nav { display: none; }
   .custom-cursor { display:none !important; }
   .experience-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
   .team-grid { grid-template-columns: 1fr; max-width: 360px; }
@@ -2211,12 +2243,6 @@ a.experience-card { text-decoration: none; color: inherit; }
   }
   .team-section__cta { margin-top: 48px; }
   .team-section__cta .btn { width: 100%; max-width: 320px; justify-content: center; }
-  .menu-pdf { padding: 0 0 80px; }
-  .menu-pdf__frame object,
-  .menu-pdf__frame iframe {
-    min-height: 480px;
-    height: 70vh;
-  }
   .opentable-block { padding: 28px 20px; }
   .events-teaser { padding: 100px 0; }
   .events-teaser__pills { gap: 8px; }
@@ -2256,8 +2282,9 @@ a.experience-card { text-decoration: none; color: inherit; }
 @media (hover: none) {
   .split-panel:hover { flex: 1; }
   .split-panel__enter { opacity: 0.7; transform: none; }
+  .dish-card__content { transform: translateY(0); }
   .dish-card__desc,
-  .cocktail-card__desc { opacity: 0.75; }
+  .cocktail-card__desc { opacity: 0.85; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2267,7 +2294,6 @@ a.experience-card { text-decoration: none; color: inherit; }
     transform: none !important;
     transition: none !important;
   }
-  .atmosphere__marquee { animation: none; }
   .split-panel__bg,
   .sura-hero__bg { animation: none; }
 }

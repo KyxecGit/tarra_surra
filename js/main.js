@@ -225,12 +225,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ── Marquee duplicate for infinite scroll ──
-  const marquee = document.querySelector('.atmosphere__marquee');
-  if (marquee) {
-    const items = marquee.innerHTML;
-    marquee.innerHTML = items + items;
-  }
+  // ── Atmosphere carousel (swipe on touch, buttons on desktop) ──
+  document.querySelectorAll('.atmosphere__carousel').forEach((carousel) => {
+    const track = carousel.querySelector('.atmosphere__track');
+    const prev = carousel.querySelector('.atmosphere__nav--prev');
+    const next = carousel.querySelector('.atmosphere__nav--next');
+    if (!track) return;
+
+    const scrollByItem = (dir) => {
+      const item = track.querySelector('.atmosphere__item');
+      if (!item) return;
+      const gap = parseFloat(getComputedStyle(item).marginRight) || 16;
+      const amount = item.getBoundingClientRect().width + gap;
+      track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    };
+
+    if (prev) prev.addEventListener('click', () => scrollByItem(-1));
+    if (next) next.addEventListener('click', () => scrollByItem(1));
+  });
 
   // ── Parallax on image breaks ──
   const imageBreaks = document.querySelectorAll('.image-break__bg');
