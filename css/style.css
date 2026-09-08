@@ -984,7 +984,30 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 }
 .page-hero__content { position:relative; z-index:2; text-align:center; }
 .page-hero__content p { margin:0 auto; max-width:540px; }
+.page-hero__actions { margin-top: 36px; }
 .page-hero--short { height:55vh; min-height:400px; }
+
+.menu-pdf { padding: 0 0 120px; }
+.menu-pdf__frame {
+  max-width: 1180px;
+  margin: 0 auto;
+  background: #05051a;
+  border: 1px solid rgba(201,169,110,0.12);
+}
+.menu-pdf__frame object,
+.menu-pdf__frame iframe {
+  display: block;
+  width: 100%;
+  height: 85vh;
+  min-height: 640px;
+  border: 0;
+  background: #05051a;
+}
+.menu-pdf__frame p {
+  padding: 48px 24px;
+  text-align: center;
+}
+.menu-pdf__frame a { color: var(--gold); }
 
 .menu-list { padding:var(--section-pad); }
 .menu-list__intro { text-align:center; margin-bottom:80px; }
@@ -1921,6 +1944,10 @@ a.experience-card { text-decoration: none; color: inherit; }
   font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px;
 }
 .team-card .btn { padding: 12px 24px; font-size: 0.65rem; }
+.team-section__cta {
+  text-align: center;
+  margin-top: 72px;
+}
 
 /* Visit block on home */
 .visit-block { padding: var(--section-pad); }
@@ -2181,6 +2208,14 @@ a.experience-card { text-decoration: none; color: inherit; }
   .team-card__photo {
     width: calc(100% + 44px);
     margin: 0 -22px 20px;
+  }
+  .team-section__cta { margin-top: 48px; }
+  .team-section__cta .btn { width: 100%; max-width: 320px; justify-content: center; }
+  .menu-pdf { padding: 0 0 80px; }
+  .menu-pdf__frame object,
+  .menu-pdf__frame iframe {
+    min-height: 480px;
+    height: 70vh;
   }
   .opentable-block { padding: 28px 20px; }
   .events-teaser { padding: 100px 0; }
