@@ -1057,6 +1057,7 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 .menu-stage__sheet {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .menu-stage__sheet img {
   width: 100%;
@@ -1064,20 +1065,27 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   display: block;
   cursor: zoom-in;
 }
-.menu-stage > .menu-stage__sheet {
-  width: calc(100% - clamp(16px, 2.4vw, 40px));
-  margin: 0 auto;
+.menu-stage > .menu-stage__sheet,
+.menu-stage__split {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .menu-stage__split {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: clamp(8px, 1vw, 16px);
-  align-items: start;
-  width: calc(100% - clamp(16px, 2.4vw, 40px));
-  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(8px, 0.8vw, 12px);
 }
-.menu-stage__sheet--tarra { background: #e4d9bd; }
-.menu-stage__sheet--sura { background: #0b1028; }
+.menu-stage__sheet--food {
+  flex: 1.629 0 0;
+  min-width: 0;
+}
+.menu-stage__sheet--drinks {
+  flex: 0.599 0 0;
+  min-width: 0;
+}
+.menu-stage__sheet--tarra { background: #e1d0b0; }
+.menu-stage__sheet--sura { background: #2d2e40; }
 
 .menu-list { padding:var(--section-pad); }
 .menu-list__intro { text-align:center; margin-bottom:80px; }
@@ -2145,7 +2153,7 @@ a.experience-card { text-decoration: none; color: inherit; }
   .chef-section__image img, .chef-bio__image img { width: 240px; }
   .menu-preview__grid { grid-template-columns:repeat(2,1fr); }
   .cocktails__grid { grid-template-columns:repeat(2,1fr); }
-  .menu-stage__split { gap: 10px; }
+  .menu-stage__split { gap: 8px; }
   .testimonials__grid { grid-template-columns:1fr; max-width:600px; margin:0 auto; }
   .footer__grid { grid-template-columns:repeat(2,1fr); }
   .gallery-page__grid { grid-template-columns:repeat(2,1fr); grid-auto-rows:260px; }
@@ -2228,8 +2236,13 @@ a.experience-card { text-decoration: none; color: inherit; }
   .menu-stage { padding: 110px 0 48px; }
   .menu-stage__header { margin-bottom: 28px; }
   .menu-stage__split {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 16px;
+  }
+  .menu-stage__sheet--food,
+  .menu-stage__sheet--drinks {
+    flex: none;
+    width: 100%;
   }
   .menu-preview__grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; gap: 16px; }
   .cocktails__grid { grid-template-columns:1fr; max-width:350px; margin:0 auto; }
