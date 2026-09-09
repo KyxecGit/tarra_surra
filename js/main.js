@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Lightbox ──
   const lightbox = document.querySelector('.lightbox');
   const lightboxImg = lightbox ? lightbox.querySelector('img') : null;
-  const galleryItems = document.querySelectorAll('.gallery-page__item img, .chef-gallery__item img, .chef-gallery__mosaic img');
+  const galleryItems = document.querySelectorAll('.gallery-page__item img, .chef-gallery__item img, .chef-gallery__mosaic img, .menu-stage img');
 
   if (lightbox && lightboxImg) {
     galleryItems.forEach(img => {
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Create lightbox dynamically if not present ──
   if (!lightbox) {
-    const galleryPageItems = document.querySelectorAll('.gallery-page__item img, .chef-gallery__item img, .chef-gallery__mosaic img');
+    const galleryPageItems = document.querySelectorAll('.gallery-page__item img, .chef-gallery__item img, .chef-gallery__mosaic img, .menu-stage img');
     if (galleryPageItems.length > 0) {
       const lb = document.createElement('div');
       lb.className = 'lightbox';
