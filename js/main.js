@@ -225,6 +225,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ── Tarra menu: swipe between dinner / drinks on mobile ──
+  const menuSplit = document.querySelector('.menu-stage__split');
+  if (menuSplit && menuSplit.querySelectorAll('.menu-stage__sheet').length > 1) {
+    const sheets = Array.from(menuSplit.querySelectorAll('.menu-stage__sheet'));
+    const dots = Array.from(document.querySelectorAll('.menu-stage__dot'));
+    const mobileMq = window.matchMedia('(max-width: 768px)');
+
+    const sheetHeight = (sheet) => {
+      const img = sheet.querySelector('img');
+      return (img && img.offsetHeight) || sheet.offsetHeight;
+    };
+
+    const currentIndex = () => {
+      const w = menuSplit.clientWidth || 1;
+      return Math.max(0, Math.min(sheets.length - 1, Math.round(menuSplit.scrollLeft / w)));
+    };
+
+    const syncPager = () => {
+      if (!mobileMq.matches) {
+        menuSplit.style.height = '';
+        return;
+      }
+      const w = menuSplit.clientWidth || 1;
+      const t = Math.max(0, Math.min(1, menuSplit.scrollLeft / w));
+      const h0 = sheetHeight(sheets[0]);
+      const h1 = sheetHeight(sheets[1]);
+      if (h0 && h1) menuSplit.style.height = `${h0 + (h1 - h0) * t}px`;
+      const idx = currentIndex();
+      dots.forEach((dot, n) => {
+        dot.classList.toggle('is-active', n === idx);
+        dot.setAttribute('aria-selected', n === idx ? 'true' : 'false');
+      });
+    };
+
+    menuSplit.addEventListener('scroll', syncPager, { passive: true });
+    window.addEventListener('resize', syncPager);
+    sheets.forEach((sheet) => {
+      const img = sheet.querySelector('img');
+      if (img) {
+        if (img.complete) syncPager();
+        else img.addEventListener('load', syncPager, { once: true });
+      }
+    });
+    if (mobileMq.addEventListener) mobileMq.addEventListener('change', syncPager);
+    else mobileMq.addListener(syncPager);
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const n = Number(dot.getAttribute('data-index')) || 0;
+        const target = sheets[n];
+        if (!target) return;
+        menuSplit.scrollTo({ left: n * menuSplit.clientWidth, behavior: 'smooth' });
+      });
+    });
+
+    // Don't open lightbox if the gesture was a swipe.
+    menuSplit.querySelectorAll('img').forEach((img) => {
+      let startX = 0;
+      img.addEventListener('pointerdown', (e) => { startX = e.clientX; }, { passive: true });
+      img.addEventListener('click', (e) => {
+        if (mobileMq.matches && Math.abs(e.clientX - startX) > 12) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+    });
+  }
+
   // ── Atmosphere carousel (swipe on touch, buttons on desktop) ──
   document.querySelectorAll('.atmosphere__carousel').forEach((carousel) => {
     const track = carousel.querySelector('.atmosphere__track');

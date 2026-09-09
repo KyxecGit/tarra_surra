@@ -1086,6 +1086,24 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 }
 .menu-stage__sheet--tarra { background: #e1d0b0; }
 .menu-stage__sheet--sura { background: #2d2e40; }
+.menu-stage__pager {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+.menu-stage__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 1px solid var(--gold);
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s var(--ease);
+}
+.menu-stage__dot.is-active { background: var(--gold); }
 
 .menu-list { padding:var(--section-pad); }
 .menu-list__intro { text-align:center; margin-bottom:80px; }
@@ -2236,14 +2254,26 @@ a.experience-card { text-decoration: none; color: inherit; }
   .menu-stage { padding: 110px 0 48px; }
   .menu-stage__header { margin-bottom: 28px; }
   .menu-stage__split {
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
   }
+  .menu-stage__split::-webkit-scrollbar { display: none; }
   .menu-stage__sheet--food,
   .menu-stage__sheet--drinks {
-    flex: none;
+    flex: 0 0 100%;
     width: 100%;
+    max-width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
+  .menu-stage__pager { display: flex; }
   .menu-preview__grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; gap: 16px; }
   .cocktails__grid { grid-template-columns:1fr; max-width:350px; margin:0 auto; }
   .chef-gallery__grid { grid-template-columns:repeat(2,1fr); padding:0 24px; }
