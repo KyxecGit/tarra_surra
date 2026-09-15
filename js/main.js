@@ -357,6 +357,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Google Ads: reservation clicks ──
+  const trackLead = (label) => {
+    if (typeof gtag !== 'function') return;
+    gtag('event', 'generate_lead', {
+      send_to: 'AW-18419124849',
+      event_category: 'reservation',
+      event_label: label
+    });
+  };
+  document.querySelectorAll('a[href*="opentable.com"]').forEach((a) => {
+    a.addEventListener('click', () => {
+      const href = (a.getAttribute('href') || '').toLowerCase();
+      const text = (a.textContent || '').toLowerCase();
+      const venue = (href.includes('sura') || href.includes('1519705') || text.includes('sura')) ? 'sura' : 'tarra';
+      trackLead('reserve_' + venue);
+    });
+  });
+  document.querySelectorAll('a[href*="forms.gle/FpJchGt4PNV8JtMm8"]').forEach((a) => {
+    a.addEventListener('click', () => trackLead('join_the_team'));
+  });
+
   // ── Cookie Consent ──
   const cookieBanner = document.getElementById('cookieBanner');
   const cookieAccept = document.getElementById('cookieAccept');
