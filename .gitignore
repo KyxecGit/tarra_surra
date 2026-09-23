@@ -10,4 +10,4 @@ Artem TARRA Website/
 docs/_tmp_mosaics/
 *.ARW
 _prep_launch_images.py
-
+.tools/
