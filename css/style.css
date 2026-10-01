@@ -1081,7 +1081,7 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
   min-width: 0;
 }
 .menu-stage__sheet--drinks {
-  flex: 0.599 0 0;
+  flex: 0.581 0 0;
   min-width: 0;
 }
 .menu-stage__sheet--tarra { background: #e1d0b0; }
