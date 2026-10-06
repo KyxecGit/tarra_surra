@@ -43,7 +43,7 @@ Verified against `main` at `8f6f6db` plus current working tree.
 | Phone on homepage | Done | `index.html` address line |
 | Common hours Wed–Sun 5–12, Mon–Tue Closed | Done | footers + Visit + Reservation |
 | Remove Tarra Offerings / Sura Offerings | Done | no Offerings sections remain |
-| Remove footer Menu “Dinner, tasting, and dessert lists” | Done on tarra/sura/gallery/menu; **still leftover** on chef/robert/reservation/privacy/terms/visit Explore |
+| Remove footer Menu “Dinner, tasting, and dessert lists” | Done on tarra/sura/gallery/menu; **still leftover** on chef/reservation/privacy/terms/visit Explore |
 | Remove `Visit guide →` | Done | grep clean |
 | Sura hero / about = The Lounge | Done | `sura.html` |
 | Meet Namo / platform CTA = Experience above OpenTable | Done | `tarra.html` chef-section + `chef.html` CTA |
@@ -83,7 +83,6 @@ Missing from export (do not invent): Artem voice 00:21, Artem voice 00:30, incom
 | `visit.html` | ZIP, ride-share drop-off, Contact phone+email+IG, footer tagline + IG, drop Explore/Menu column |
 | `reservation.html` | ZIP, nav, footer contact/IG, drop Menu column |
 | `chef.html` | Nav label, ZIP, footer contact/IG, drop Menu column |
-| `robert.html` | Nav label, ZIP, restore missing IG, drop Menu column, Sura CTA “bar program” → lounge wording |
 | `privacy.html`, `terms.html` | ZIP, nav, footer contact/IG, drop Menu column |
 
 Do not touch image binaries, PDFs on disk, or `js/main.js` unless a menu-page class needs no JS.
@@ -124,7 +123,7 @@ Reserve a Table
 </div>
 ```
 
-Sura pages (`sura.html`, `sura-menu.html`, `robert.html`) use `https://www.instagram.com/surachicago` in that same markup.
+Sura pages (`sura.html`, `sura-menu.html`) use `https://www.instagram.com/surachicago` in that same markup.
 
 **Visit parking:**
 
@@ -176,7 +175,7 @@ At line 1902–1904, change to:
 
 Exact string replacements (nav/button/mobile only — do **not** change “Reserve Tarra” / “Reserve Sura” OpenTable buttons, and do **not** change body copy like “Reserve your table”):
 
-Pages: `tarra.html`, `sura.html`, `menu.html`, `sura-menu.html`, `gallery.html`, `visit.html`, `reservation.html` (no reserve button today — leave it), `chef.html`, `robert.html`, `privacy.html`, `terms.html`.
+Pages: `tarra.html`, `sura.html`, `menu.html`, `sura-menu.html`, `gallery.html`, `visit.html`, `reservation.html` (no reserve button today — leave it), `chef.html`, `privacy.html`, `terms.html`.
 
 Desktop: `class="btn navbar__reserve"` inner text `Reserve` → `Reserve a Table`.
 Mobile: the last `<a …>Reserve</a>` inside `.navbar__mobile-menu` → `Reserve a Table`.
@@ -193,7 +192,7 @@ Expected: no desktop reserve button still says only `Reserve`. Mobile last items
 - [ ] **Step 4: Commit**
 
 ```bash
-git add css/style.css tarra.html sura.html menu.html sura-menu.html gallery.html visit.html chef.html robert.html privacy.html terms.html
+git add css/style.css tarra.html sura.html menu.html sura-menu.html gallery.html visit.html chef.html privacy.html terms.html
 git commit -m "fix: larger nav type and Reserve a Table"
 ```
 
@@ -204,7 +203,7 @@ git commit -m "fix: larger nav type and Reserve a Table"
 **Files:**
 - Modify: `index.html` (visible line + both JSON-LD PostalAddress nodes)
 - Modify: `visit.html` (body address, map query, JSON-LD, footer)
-- Modify: footer Visit columns on `tarra.html`, `sura.html`, `menu.html`, `sura-menu.html`, `gallery.html`, `reservation.html`, `chef.html`, `robert.html`, `privacy.html`, `terms.html`
+- Modify: footer Visit columns on `tarra.html`, `sura.html`, `menu.html`, `sura-menu.html`, `gallery.html`, `reservation.html`, `chef.html`, `privacy.html`, `terms.html`
 - Modify: `reservation.html` address card
 - Modify: `terms.html` postal line if present
 
@@ -241,7 +240,7 @@ Every guest-facing match must include `60654` on the next line or same line. `ca
 - [ ] **Step 4: Commit**
 
 ```bash
-git add index.html visit.html tarra.html sura.html menu.html sura-menu.html gallery.html reservation.html chef.html robert.html privacy.html terms.html
+git add index.html visit.html tarra.html sura.html menu.html sura-menu.html gallery.html reservation.html chef.html privacy.html terms.html
 git commit -m "fix: add ZIP 60654 to every address"
 ```
 
@@ -250,7 +249,7 @@ git commit -m "fix: add ZIP 60654 to every address"
 ### Task 3: Contact block — phone, main@, Follow us on Instagram + small icon
 
 **Files:**
-- Modify: `tarra.html`, `visit.html`, `reservation.html`, `chef.html`, `robert.html`, `privacy.html`, `terms.html` (these still have plain “Instagram” or a broken empty span)
+- Modify: `tarra.html`, `visit.html`, `reservation.html`, `chef.html`, `privacy.html`, `terms.html` (these still have plain “Instagram” or a broken empty span)
 - Leave as-is if already correct: `gallery.html`, `menu.html`, `sura.html`, `sura-menu.html` — but still add **phone** on Contact if missing, and ZIP is Task 2
 
 **Interfaces:**
@@ -278,7 +277,6 @@ Replace the Contact item so it is:
 On pages with 4-column footers (`footer__grid` without `--3`): delete the **Menu** or **Explore** column entirely and switch the grid to `footer__grid footer__grid--3` (Hours / Visit / Contact). Contact uses the shared snippet.
 
 Special cases:
-- `robert.html` Contact currently has `<div class="footer__social"><span></span></div>` — Instagram is **missing**. Restore Sura IG.
 - `tarra.html` already has phone + plain Instagram — swap to `footer__ig`.
 - `visit.html` footer tagline `Contemporary Thai Dining &amp; Cocktail Lounge` → `Contemporary Thai Cuisine`. Add phone + `footer__ig`. Drop Explore.
 - `gallery.html` / `menu.html` already have `footer__ig`; add ZIP via Task 2 only.
@@ -295,7 +293,7 @@ Expected: `Follow us on Instagram` on every public footer. Zero `reservations@`.
 - [ ] **Step 4: Commit**
 
 ```bash
-git add tarra.html sura.html menu.html sura-menu.html gallery.html visit.html reservation.html chef.html robert.html privacy.html terms.html
+git add tarra.html sura.html menu.html sura-menu.html gallery.html visit.html reservation.html chef.html privacy.html terms.html
 git commit -m "fix: contact phone, main@, Instagram icon on every footer"
 ```
 
@@ -392,7 +390,6 @@ git commit -m "fix: menu coming soon, unlink PDFs for launch"
 **Files:**
 - Modify: `sura.html` about image alt
 - Modify: `gallery.html` Sura alts
-- Modify: `robert.html` CTA paragraph (Sura-facing)
 
 **Interfaces:**
 - Consumes: official Sura blurb (keep “cocktail lounge”)
@@ -403,15 +400,9 @@ git commit -m "fix: menu coming soon, unlink PDFs for launch"
 `sura.html`: `alt="Sura lounge bar"` → `alt="Sura lounge"`.
 `gallery.html`: `alt="Sura bar"` → `alt="Sura lounge"`; `alt="Sura back bar"` → `alt="Sura lounge"`.
 
-- [ ] **Step 2: Robert CTA** (visible Sura language)
+Do **not** edit Lima’s official Sura paragraphs.
 
-```html
-<p>Reserve your place at Sura and experience a lounge program designed to tell your story.</p>
-```
-
-Do **not** rewrite Robert’s biography (his career copy uses “bar” as a job history word). Do **not** edit Lima’s official Sura paragraphs.
-
-- [ ] **Step 3: Grep on `sura.html` only**
+- [ ] **Step 2: Grep on `sura.html` only**
 
 ```
 rg -i "bar" sura.html
@@ -419,10 +410,10 @@ rg -i "bar" sura.html
 
 Expected: no heading/label/alt using “bar”. Official blurb may still say “cocktail lounge” only.
 
-- [ ] **Step 4: Commit**
+- [ ] **Step 3: Commit**
 
 ```bash
-git add sura.html gallery.html robert.html
+git add sura.html gallery.html
 git commit -m "fix: Sura lounge wording, drop bar labels"
 ```
 
@@ -434,7 +425,7 @@ git commit -m "fix: Sura lounge wording, drop bar labels"
 - Modify: none unless Task 3 already touched `visit.html` team styles
 
 **Interfaces:**
-- Consumes: current four cards (Lorraine, Chef Namo, Sip, Robert)
+- Consumes: current three cards (Lorraine, Chef Namo, Sip)
 - Produces: no invented bios
 
 - [ ] **Step 1: Confirm cards**
@@ -444,7 +435,6 @@ git commit -m "fix: Sura lounge wording, drop bar labels"
 1. Hospitality — Lorraine (name only, no bio)
 2. Culinary — Chef Namo + Profile → `chef.html`
 3. Beverage — Sip (name only, no bio)
-4. Beverage Director — Robert + Profile → `robert.html`
 
 Do **not** add headshots. Do **not** write Lorraine/Sip copy. Do **not** move team off Visit in this pass (03:41: “update the context first”).
 

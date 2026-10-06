@@ -1997,8 +1997,10 @@ a.experience-card { text-decoration: none; color: inherit; }
 .team-section__header { text-align: center; max-width: 560px; margin: 0 auto 56px; }
 .team-section__header p { margin-top: 14px; font-size: 0.95rem; }
 .team-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
-  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+  /* Center the pair while preserving the former three-column card width. */
+  width: calc((100% - 56px) / 3 * 2 + 28px);
+  max-width: calc((1000px - 56px) / 3 * 2 + 28px); margin: 0 auto;
 }
 .team-card {
   background: var(--bg-card);
@@ -2162,7 +2164,6 @@ a.experience-card { text-decoration: none; color: inherit; }
   .home-gallery__row { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
   .home-gallery__item--tall { grid-row: span 1; min-height: 240px; }
   .events-page__grid { grid-template-columns: 1fr 1fr; }
-  .team-grid { grid-template-columns: repeat(3, 1fr); max-width: 100%; }
   .about-section__images { min-height: 400px; }
   .about-section__img-wrap::before { width: 260px; height: 260px; }
   .about-section__img-wrap::after  { width: 340px; height: 340px; }
@@ -2304,7 +2305,7 @@ a.experience-card { text-decoration: none; color: inherit; }
   .atmosphere__nav { display: none; }
   .custom-cursor { display:none !important; }
   .experience-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
-  .team-grid { grid-template-columns: 1fr; max-width: 360px; }
+  .team-grid { grid-template-columns: 1fr; width: 100%; max-width: 360px; }
   .experience-card { min-height: 0; padding: 32px 24px; }
   .signatures__grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .home-gallery__row { grid-template-columns: 1fr 1fr; gap: 10px; }

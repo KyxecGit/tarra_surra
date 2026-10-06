@@ -18,7 +18,7 @@
 - Gallery: real rooms + food + cocktails
 - Footers: `main@tarrachicago.com`, common hours Wed–Sun 5pm–12am, Follow us on Instagram + icon
 - Visit: common hours, no valet, public garage, Passenger Drop-Off: Main Entrance
-- Team: Lorraine (name only — **no bio in dump**), Namo, Sip (Beverage, no bio), Robert
+- Team: Lorraine (name only — **no bio in dump**), Namo, Sip (Beverage, no bio)
 - Chef page CTA: Experience / OpenTable
 
 ## Still needed
@@ -252,7 +252,7 @@ Homepage bottom line becomes:
 | `gallery.html` | Real Tarra + Sura + food + cocktails, no CGI, no monks |
 | `visit.html` | Common hours, email, phone |
 | `reservation.html` | Common hours, email, phone |
-| `chef.html`, `robert.html`, `privacy.html`, `terms.html` | Footer / email / fine-dining sweep |
+| `chef.html`, `privacy.html`, `terms.html` | Footer / email / fine-dining sweep |
 | `css/style.css` | Homepage tagline width = wordmark; hero tagline width = wordmark; 3-col footer; food cards without titles |
 | `sitemap.xml` | Unchanged URLs; no new pages required |
 | `.gitignore` | Ignore dumps, mosaics, RAW |
@@ -660,7 +660,7 @@ git commit -m "feat: gallery of real interiors, food, and cocktails"
 ### Task 7: Visit, reservation, and global footer / email / hours / phone
 
 **Files:**
-- Modify: `visit.html`, `reservation.html`, `chef.html`, `robert.html`, `privacy.html`, `terms.html`, and any footer still dirty after Tasks 3–6
+- Modify: `visit.html`, `reservation.html`, `chef.html`, `privacy.html`, `terms.html`, and any footer still dirty after Tasks 3–6
 - Modify: `visit.html` JSON-LD email
 
 **Interfaces:**
@@ -692,7 +692,7 @@ Search every `*.html` for:
 
 `careers@tarrachicago.com` stays (not mentioned by the client).
 
-- [ ] **Step 4: `robert.html` / `chef.html`**
+- [ ] **Step 4: `chef.html`**
 
 No staff photos to add. Only footer + “fine dining” cleanup. Do not touch biography substance except the forbidden phrase.
 
@@ -711,7 +711,7 @@ Hours are one block. Email is main@. Phone is present. Maps iframe works. OpenTa
 - [ ] **Step 7: Commit**
 
 ```bash
-git add visit.html reservation.html chef.html robert.html privacy.html terms.html
+git add visit.html reservation.html chef.html privacy.html terms.html
 git commit -m "fix: common hours, main@ email, phone, footer sweep"
 ```
 
