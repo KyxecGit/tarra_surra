@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const name = form.elements.namedItem('name');
   const phone = form.elements.namedItem('phone');
   const message = form.elements.namedItem('message');
+  const venue = form.dataset.venue;
   const submit = form.querySelector('button[type="submit"]');
   const status = form.querySelector('[data-inquiry-status]');
   let pending = false;
@@ -53,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
           name: name.value.trim(),
           phone: phone.value.trim(),
           message: message.value.trim(),
-          _subject: 'Private event inquiry — Tarra & Sura',
+          venue,
+          _subject: `${venue} private event inquiry`,
           _template: 'table',
           _honey: ''
         }),
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       status.dataset.state = 'success';
       status.textContent = 'Thank you. We’ve received your inquiry and our team will be in touch shortly.';
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'private_event_inquiry', inquiry_type: 'private_events' });
+      window.dataLayer.push({ event: 'private_event_inquiry', inquiry_type: 'private_events', venue });
     } catch {
       status.dataset.state = 'error';
       status.textContent = 'We couldn’t confirm your inquiry. Please try again or email events@tarrachicago.com. Your details are still here.';

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
-  
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.remove('no-js');</script>
+
   <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -9,8 +11,8 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MXGXRNPK');
   </script>
-  
-  <meta charset="UTF-8">
+
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18419124849"></script>
   <script>
@@ -33,7 +35,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="https://www.tarrachicago.com/images/logos/site-icon-192.png">
   <link rel="shortcut icon" href="https://www.tarrachicago.com/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="https://www.tarrachicago.com/images/logos/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=20261028">
+  <link rel="stylesheet" href="css/style.css?v=20261028b">
 </head>
 <body>
 
@@ -41,7 +43,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXGXRNPK"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  
+
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="preloader" role="status" aria-label="Loading">
     <img src="images/logos/sura-white-logo.png" alt="Sura" class="preloader__logo logo-img logo-img--sura">
@@ -52,7 +54,7 @@
         <a href="index.html" class="navbar__link">Home</a>
         <a href="tarra.html" class="navbar__link">Tarra</a>
         <a href="sura-menu.html" class="navbar__link">Menu</a>
-        <a href="private-events.html" class="navbar__link">Private Events</a>
+        <a href="sura-private-events.html" class="navbar__link">Private Events</a>
       </div>
       <a href="index.html" class="navbar__logo" aria-label="Tarra &amp; Sura home">
         <img src="images/logos/tarra-emblem-white.png" alt="Tarra &amp; Sura" class="navbar__logo-img logo-img logo-img--emblem">
@@ -71,11 +73,13 @@
       <a href="gallery.html">Gallery</a>
       <a href="team.html">Team</a>
       <a href="https://www.opentable.com/booking/restref/availability?lang=en-US&amp;correlationId=b9677461-eecf-4f3e-8bd5-eefb54755127&amp;restRef=1519705&amp;otSource=Restaurant%20website" target="_blank" rel="noopener noreferrer">Reserve a Table</a>
-      <a href="private-events.html">Private Events</a>
+      <a href="sura-private-events.html">Private Events</a>
     </div>
   </nav>
 
-  <section class="sura-hero" id="main-content" aria-label="Sura lounge hero">
+  <main id="main-content" tabindex="-1">
+    <h1 class="sr-only">Sura — Thai-inspired Cocktail Lounge</h1>
+<section class="sura-hero" aria-label="Sura lounge hero">
     <div class="sura-hero__bg" style="background-image: url('images/sura/sura-interior-1.jpg');" aria-hidden="true"></div>
     <div class="sura-hero__overlay" aria-hidden="true"></div>
     <div class="sura-hero__content">
@@ -167,7 +171,7 @@
     </div>
     <div class="atmosphere__carousel">
       <button type="button" class="atmosphere__nav atmosphere__nav--prev" aria-label="Previous photos"><span aria-hidden="true">←</span></button>
-      <div class="atmosphere__track">
+      <div class="atmosphere__track" tabindex="0" aria-label="Sura atmosphere photos — scroll to explore">
         <div class="atmosphere__item"><img src="images/sura/sura-interior-1.jpg" alt="Sura lounge" loading="lazy"></div>
         <div class="atmosphere__item"><img src="images/sura/sura-interior-2.jpg" alt="Sura interior" loading="lazy"></div>
         <div class="atmosphere__item"><img src="images/sura/sura-interior-3.jpg" alt="Sura atmosphere" loading="lazy"></div>
@@ -184,11 +188,13 @@
       <span class="section-subtitle">Receptions &amp; Evening Events</span>
       <h2 id="private-events-teaser">Private Events</h2>
       <div class="gold-line-center" aria-hidden="true"></div>
-      <p>From intimate dinners to full celebrations, Tarra and Sura are available for private events.</p>
-      <a href="private-events.html#sura-events" class="btn btn-arrow">Explore Private Events</a>
+      <p>A Thai-inspired cocktail lounge for receptions, holiday parties and evening events.</p>
+      <a href="sura-private-events.html" class="btn btn-arrow">Explore Private Events</a>
     </div>
   </section>
 
+
+  </main>
   <footer class="footer" id="contact">
     <div class="container">
       <div class="footer__top">
@@ -196,18 +202,18 @@
       </div>
       <div class="footer__grid footer__grid--3">
         <div class="footer__col reveal">
-          <h4>Hours</h4>
+          <h2>Hours</h2>
           <p><span class="footer__venue">Tarra</span>Wed–Sun 5:00 PM — 10:00 PM<br>Mon–Tue Closed</p>
           <p><span class="footer__venue">Sura</span>Wed–Thu, Sun 5:00 PM — 11:00 PM<br>Fri–Sat 5:00 PM — 12:00 AM<br>Mon–Tue Closed</p>
         </div>
         <div class="footer__col reveal">
-          <h4>Visit</h4>
+          <h2>Visit</h2>
           <p>121 W Hubbard St<br>Chicago, IL 60654</p>
           <p><a href="tel:312.955.8889">312.955.8889</a></p>
           <p style="margin-top:12px;"><a href="https://maps.app.goo.gl/awRD1zMe6Aw5E2sHA" target="_blank" rel="noopener noreferrer">Google Maps →</a></p>
         </div>
         <div class="footer__col reveal">
-          <h4>Contact</h4>
+          <h2>Contact</h2>
           <p><a href="tel:312.955.8889">312.955.8889</a></p>
           <p><a href="mailto:main@tarrachicago.com">main@tarrachicago.com</a></p>
           <a class="footer__ig" href="https://www.instagram.com/surachicago" target="_blank" rel="noopener noreferrer">
@@ -220,13 +226,14 @@
       <div class="footer__bottom">
         <p>&copy; 2026 Tarra &amp; Sura. All rights reserved.</p>
         <div class="footer__bottom-links">
-          <a href="private-events.html">Private Events</a>
+          <a href="visit.html">Visit Us</a>
+          <a href="sura-private-events.html">Private Events</a>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
         </div>
       </div>
     </div>
   </footer>
-  <script src="js/main.js?v=20261028"></script>
+  <script src="js/main.js?v=20261028b"></script>
 </body>
 </html>

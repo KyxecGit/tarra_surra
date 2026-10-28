@@ -9,6 +9,14 @@
 .events-intro__venues { display: flex; gap: 28px; margin-top: 36px; color: var(--white-soft); font-size: 0.85rem; }
 .events-intro__venues a { border-bottom: 1px solid var(--gold-dark); padding: 4px 0; }
 .events-intro__venues a:hover { color: var(--gold); }
+.events-intro__back { display: block; width: fit-content; margin-top: 28px; color: var(--gold); font-size: 0.85rem; padding: 8px 0; }
+.events-page--sura .events-intro__image img { object-position: center; }
+.events-chooser { padding-top: 144px; padding-bottom: 96px; }
+.events-chooser > p { max-width: 640px; }
+.events-chooser__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; }
+.events-chooser__venue img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.events-chooser__venue h2 { margin: 24px 0 16px; }
+.events-chooser__venue span { display: inline-block; margin-top: 24px; color: var(--gold); font-size: 0.85rem; }
 .event-venue { padding: 72px 0 88px; border-top: 1px solid var(--gray-dark); scroll-margin-top: 100px; }
 .event-venue--sura { background: var(--bg-alt); }
 .event-venue__heading { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 36px; }
@@ -55,6 +63,8 @@
   .events-intro h1 { font-size: 5rem; }
 }
 @media (max-width: 768px) {
+  .events-chooser { padding-top: 112px; padding-bottom: 64px; }
+  .events-chooser__grid { grid-template-columns: 1fr; gap: 48px; }
   .events-intro { padding: 120px 0 56px; }
   .events-intro__grid, .event-venue__heading, .event-inquiry__grid { grid-template-columns: 1fr; gap: 32px; }
   .events-intro h1 { font-size: clamp(3.6rem, 14vw, 5rem); max-width: none; }
@@ -62,7 +72,7 @@
   .event-venue { padding: 48px 0 56px; }
   .event-venue__heading { gap: 20px; margin-bottom: 28px; }
   .event-gallery .atmosphere__item { height: clamp(220px, 60vw, 360px); }
-  .event-gallery .atmosphere__nav { display: flex; width: 40px; height: 40px; }
+  .event-gallery .atmosphere__nav { display: flex; width: 44px; height: 44px; }
   .event-gallery .atmosphere__nav--prev { left: 8px; }
   .event-gallery .atmosphere__nav--next { right: 8px; }
   .event-venue__bottom { align-items: flex-start; flex-direction: column; gap: 12px; }

@@ -2,6 +2,7 @@
    Tarra & Sura — JavaScript (Full Version)
    ============================================ */
 document.addEventListener('DOMContentLoaded', () => {
+  const scrollBehavior = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 
   // ── Preloader ──
   const preloader = document.querySelector('.preloader');
@@ -35,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
       hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       mobileMenu.inert = !open;
+      document.body.classList.toggle('is-menu-open', open);
+      if (open) mobileMenu.scrollTop = 0;
       document.body.style.overflow = open ? 'hidden' : '';
     };
     hamburger.addEventListener('click', () => {
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = document.querySelector(id);
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
       }
     });
   });
@@ -196,66 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Lightbox ──
-  const lightbox = document.querySelector('.lightbox');
-  const lightboxImg = lightbox ? lightbox.querySelector('img') : null;
-  const galleryItems = document.querySelectorAll('.gallery-page__item img, .chef-gallery__item img, .chef-gallery__mosaic img, .menu-stage img');
-
-  if (lightbox && lightboxImg) {
-    galleryItems.forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    lightbox.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-
-    const closeBtn = lightbox.querySelector('.lightbox__close');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    }
-  }
-
-  // ── Create lightbox dynamically if not present ──
-  if (!lightbox) {
-    const galleryPageItems = document.querySelectorAll('.gallery-page__item img, .chef-gallery__item img, .chef-gallery__mosaic img, .menu-stage img');
-    if (galleryPageItems.length > 0) {
-      const lb = document.createElement('div');
-      lb.className = 'lightbox';
-      lb.innerHTML = '<button class="lightbox__close">&times;</button><img src="" alt="Lightbox">';
-      document.body.appendChild(lb);
-      const lbImg = lb.querySelector('img');
-
-      galleryPageItems.forEach(img => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', () => {
-          lbImg.src = img.src;
-          lb.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        });
-      });
-
-      lb.addEventListener('click', () => {
-        lb.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-      lb.querySelector('.lightbox__close').addEventListener('click', (e) => {
-        e.stopPropagation();
-        lb.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    }
-  }
-
   // ── Tarra menu: swipe between dinner / drinks on mobile ──
   const menuSplit = document.querySelector('.menu-stage__split');
   if (menuSplit && menuSplit.querySelectorAll('.menu-stage__sheet').length > 1) {
@@ -307,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const n = Number(dot.getAttribute('data-index')) || 0;
         const target = sheets[n];
         if (!target) return;
-        menuSplit.scrollTo({ left: n * menuSplit.clientWidth, behavior: 'smooth' });
+        menuSplit.scrollTo({ left: n * menuSplit.clientWidth, behavior: scrollBehavior() });
       });
     });
 
@@ -332,11 +275,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!track) return;
 
     const scrollByItem = (dir) => {
-      const item = track.querySelector('.atmosphere__item');
-      if (!item) return;
-      const gap = parseFloat(getComputedStyle(item).marginRight) || 16;
-      const amount = item.getBoundingClientRect().width + gap;
-      track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+      const items = Array.from(track.querySelectorAll('.atmosphere__item'));
+      if (!items.length) return;
+      const current = track.scrollLeft;
+      const firstOffset = items[0].offsetLeft - track.offsetLeft;
+      const positions = items.map(item => item.offsetLeft - track.offsetLeft - firstOffset);
+      const target = dir > 0
+        ? positions.find(position => position > current + 2)
+        : positions.slice().reverse().find(position => position < current - 2);
+      track.scrollTo({ left: target ?? (dir > 0 ? track.scrollWidth : 0), behavior: scrollBehavior() });
     };
 
     if (prev) prev.addEventListener('click', () => scrollByItem(-1));
@@ -365,13 +312,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const galleryGridItems = document.querySelectorAll('.gallery-page__item');
 
   if (filterBtns.length > 0 && galleryGridItems.length > 0) {
+    filterBtns.forEach(btn => btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false'));
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const filter = btn.getAttribute('data-filter');
 
         // Update active button
-        filterBtns.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
 
         // Filter items
         galleryGridItems.forEach(item => {
@@ -414,21 +366,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const cookieAccept = document.getElementById('cookieAccept');
   const cookieDecline = document.getElementById('cookieDecline');
   if (cookieBanner) {
-    const consent = localStorage.getItem('cookie_consent');
+    cookieBanner.inert = true;
+    let consent;
+    try { consent = localStorage.getItem('cookie_consent'); } catch { /* Storage can be unavailable in private browsing. */ }
     if (!consent) {
-      setTimeout(() => cookieBanner.classList.add('visible'), 1500);
+      setTimeout(() => {
+        cookieBanner.classList.add('visible');
+        cookieBanner.inert = false;
+      }, 1500);
     }
+    const dismissCookies = (choice) => {
+      try { localStorage.setItem('cookie_consent', choice); } catch { /* Dismissing still works for this visit. */ }
+      cookieBanner.classList.remove('visible');
+      cookieBanner.inert = true;
+    };
     if (cookieAccept) {
-      cookieAccept.addEventListener('click', () => {
-        localStorage.setItem('cookie_consent', 'all');
-        cookieBanner.classList.remove('visible');
-      });
+      cookieAccept.addEventListener('click', () => dismissCookies('all'));
     }
     if (cookieDecline) {
-      cookieDecline.addEventListener('click', () => {
-        localStorage.setItem('cookie_consent', 'essential');
-        cookieBanner.classList.remove('visible');
-      });
+      cookieDecline.addEventListener('click', () => dismissCookies('essential'));
     }
   }
 
