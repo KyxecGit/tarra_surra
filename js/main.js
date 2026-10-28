@@ -28,10 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.navbar__hamburger');
   const mobileMenu = document.querySelector('.navbar__mobile-menu');
   if (hamburger && mobileMenu) {
+    mobileMenu.inert = true;
     const setMenuOpen = (open) => {
       hamburger.classList.toggle('active', open);
       mobileMenu.classList.toggle('open', open);
       hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileMenu.inert = !open;
       document.body.style.overflow = open ? 'hidden' : '';
     };
     hamburger.addEventListener('click', () => {
@@ -39,6 +42,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => setMenuOpen(false));
+    });
+    document.addEventListener('keydown', (event) => {
+      if (!mobileMenu.classList.contains('open')) return;
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        hamburger.focus();
+      }
+      if (event.key === 'Tab') {
+        const links = Array.from(mobileMenu.querySelectorAll('a'));
+        const first = links[0];
+        const last = links[links.length - 1];
+        if (!event.shiftKey && document.activeElement === hamburger) {
+          event.preventDefault();
+          first.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          hamburger.focus();
+        } else if (event.shiftKey && document.activeElement === hamburger) {
+          event.preventDefault();
+          last.focus();
+        } else if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          hamburger.focus();
+        }
+      }
+    });
+    window.matchMedia('(min-width: 1201px)').addEventListener('change', (event) => {
+      if (event.matches) setMenuOpen(false);
     });
   }
 
@@ -255,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const idx = currentIndex();
       dots.forEach((dot, n) => {
         dot.classList.toggle('is-active', n === idx);
-        dot.setAttribute('aria-selected', n === idx ? 'true' : 'false');
+        dot.setAttribute('aria-pressed', n === idx ? 'true' : 'false');
       });
     };
 

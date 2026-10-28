@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="https://www.tarrachicago.com/images/logos/site-icon-192.png">
   <link rel="shortcut icon" href="https://www.tarrachicago.com/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="https://www.tarrachicago.com/images/logos/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=20261018">
+  <link rel="stylesheet" href="css/style.css?v=20261028">
 </head>
 <body>
 
@@ -46,6 +46,7 @@
         <a href="index.html" class="navbar__link">Home</a>
         <a href="tarra.html" class="navbar__link">Tarra</a>
         <a href="sura.html" class="navbar__link">Sura</a>
+        <a href="private-events.html" class="navbar__link">Private Events</a>
       </div>
       <a href="index.html" class="navbar__logo" aria-label="Tarra &amp; Sura home">
         <img src="images/logos/tarra-emblem-white.png" alt="Tarra &amp; Sura" class="navbar__logo-img logo-img logo-img--emblem">
@@ -64,6 +65,7 @@
       <a href="gallery.html">Gallery</a>
       <a href="team.html">Team</a>
       <a href="https://www.opentable.com/r/tarra-chicago?ref=1068" target="_blank" rel="noopener noreferrer">Reserve a Table</a>
+      <a href="private-events.html">Private Events</a>
     </div>
   </nav>
 
@@ -75,16 +77,17 @@
     </header>
     <div class="menu-stage__split">
       <figure class="menu-stage__sheet menu-stage__sheet--tarra menu-stage__sheet--food">
-        <img src="images/menus/tarra-menu-1.jpg?v=3" alt="Tarra dinner menu" width="4104" height="2520">
+        <img src="images/menus/tarra-menu-1.jpg?v=20261028" alt="Tarra dinner menu" width="4176" height="2593">
       </figure>
       <figure class="menu-stage__sheet menu-stage__sheet--tarra menu-stage__sheet--drinks">
-        <img src="images/menus/tarra-menu-2.jpg?v=20261018" alt="Tarra cocktail and non-alcoholic drinks menu" width="2376" height="3672">
+        <img src="images/menus/tarra-menu-2.jpg?v=20261028" alt="Tarra cocktail and non-alcoholic drinks menu" width="1500" height="2592">
       </figure>
     </div>
-    <div class="menu-stage__pager" role="tablist" aria-label="Tarra menus">
-      <button type="button" class="menu-stage__dot is-active" data-index="0" aria-label="Dinner menu"></button>
-      <button type="button" class="menu-stage__dot" data-index="1" aria-label="Drinks menu"></button>
+    <div class="menu-stage__pager" role="group" aria-label="Tarra menus">
+      <button type="button" class="menu-stage__dot is-active" data-index="0" aria-label="Dinner menu" aria-pressed="true"></button>
+      <button type="button" class="menu-stage__dot" data-index="1" aria-label="Drinks menu" aria-pressed="false"></button>
     </div>
+    <p class="menu-stage__download"><a href="menus/tarra-menu.pdf?v=20261028" target="_blank" rel="noopener noreferrer">Open Tarra menu (PDF) ↗</a></p>
   </section>
 
   <section class="reservation-cta">
@@ -127,10 +130,11 @@
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 Tarra &amp; Sura. All rights reserved.</p>
-        <div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div>
+        <div class="footer__bottom-links">
+          <a href="private-events.html">Private Events</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div>
       </div>
     </div>
   </footer>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20261028"></script>
 </body>
 </html>
