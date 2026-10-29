@@ -35,7 +35,8 @@
   <link rel="icon" type="image/png" sizes="192x192" href="https://www.tarrachicago.com/images/logos/site-icon-192.png">
   <link rel="shortcut icon" href="https://www.tarrachicago.com/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="https://www.tarrachicago.com/images/logos/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=20261028c">
+  <link rel="stylesheet" href="css/style.css?v=20261029">
+  <link rel="stylesheet" href="css/events.css?v=20261029">
 </head>
 <body>
 
@@ -54,7 +55,7 @@
         <a href="index.html" class="navbar__link">Home</a>
         <a href="tarra.html" class="navbar__link">Tarra</a>
         <a href="sura-menu.html" class="navbar__link">Menu</a>
-        <a href="sura-private-events.html" class="navbar__link">Private Events</a>
+        <a href="#private-events" class="navbar__link">Private Events</a>
       </div>
       <a href="index.html" class="navbar__logo" aria-label="Tarra &amp; Sura home">
         <img src="images/logos/tarra-emblem-white.png" alt="Tarra &amp; Sura" class="navbar__logo-img logo-img logo-img--emblem">
@@ -73,7 +74,7 @@
       <a href="gallery.html">Gallery</a>
       <a href="team.html">Team</a>
       <a href="https://www.opentable.com/booking/restref/availability?lang=en-US&amp;correlationId=b9677461-eecf-4f3e-8bd5-eefb54755127&amp;restRef=1519705&amp;otSource=Restaurant%20website" target="_blank" rel="noopener noreferrer">Reserve a Table</a>
-      <a href="sura-private-events.html">Private Events</a>
+      <a href="#private-events">Private Events</a>
     </div>
   </nav>
 
@@ -122,38 +123,38 @@
         <div class="gold-line-center" aria-hidden="true"></div>
       </div>
       <div class="cocktails__grid">
-        <div class="cocktail-card reveal stagger-1">
-          <img src="images/cocktails/som-tam.webp" alt="Som Tam" class="cocktail-card__img" loading="lazy" width="1067" height="1600">
-          <div class="cocktail-card__overlay"></div>
-          <div class="cocktail-card__content">
-            <div class="cocktail-card__name">Som Tam</div>
-            <div class="cocktail-card__desc">peanut-infused wray &amp; nephew rum, leblon cachaça, ten to one amba rum, papaya, garlic honey, thai green chili, umami bitters, salt <span class="cocktail-card__allergen">contains peanuts</span></div>
+        <article class="cocktail-card dish-card reveal stagger-1">
+          <img alt="Som Tam" class="cocktail-card__img dish-card__img" height="1600" loading="lazy" src="images/cocktails/som-tam.webp" width="1067"/>
+          <div class="cocktail-card__overlay dish-card__overlay"></div>
+          <div class="cocktail-card__content dish-card__content">
+            <h3 class="cocktail-card__name dish-card__name">Som Tam</h3>
+            <p class="cocktail-card__desc dish-card__desc">peanut-infused wray &amp; nephew rum, leblon cachaça, ten to one amba rum, papaya, garlic honey, thai green chili, umami bitters, salt <span class="cocktail-card__allergen">contains peanuts</span></p>
           </div>
-        </div>
-        <div class="cocktail-card reveal stagger-2">
-          <img src="images/cocktails/sawasdee.webp" alt="Sawasdee" class="cocktail-card__img" loading="lazy" width="1067" height="1600">
-          <div class="cocktail-card__overlay"></div>
-          <div class="cocktail-card__content">
-            <div class="cocktail-card__name">Sawasdee</div>
-            <div class="cocktail-card__desc">elderflower liqueur, lime leaf-infused haku vodka, lychee, bubbles <span class="cocktail-card__allergen">contains sesame</span></div>
+        </article>
+        <article class="cocktail-card dish-card reveal stagger-2">
+          <img alt="Sawasdee" class="cocktail-card__img dish-card__img" height="1600" loading="lazy" src="images/cocktails/sawasdee.webp" width="1067"/>
+          <div class="cocktail-card__overlay dish-card__overlay"></div>
+          <div class="cocktail-card__content dish-card__content">
+            <h3 class="cocktail-card__name dish-card__name">Sawasdee</h3>
+            <p class="cocktail-card__desc dish-card__desc">elderflower liqueur, lime leaf-infused haku vodka, lychee, bubbles <span class="cocktail-card__allergen">contains sesame</span></p>
           </div>
-        </div>
-        <div class="cocktail-card reveal stagger-3">
-          <img src="images/cocktails/high-fashion.webp" alt="High Fashion" class="cocktail-card__img" loading="lazy" width="1067" height="1600">
-          <div class="cocktail-card__overlay"></div>
-          <div class="cocktail-card__content">
-            <div class="cocktail-card__name">High Fashion</div>
-            <div class="cocktail-card__desc">high west double rye whisky, apologue saffron liqueur, mango-infused fernet branca</div>
+        </article>
+        <article class="cocktail-card dish-card reveal stagger-3">
+          <img alt="High Fashion" class="cocktail-card__img dish-card__img" height="1600" loading="lazy" src="images/cocktails/high-fashion.webp" width="1067"/>
+          <div class="cocktail-card__overlay dish-card__overlay"></div>
+          <div class="cocktail-card__content dish-card__content">
+            <h3 class="cocktail-card__name dish-card__name">High Fashion</h3>
+            <p class="cocktail-card__desc dish-card__desc">high west double rye whisky, apologue saffron liqueur, mango-infused fernet branca</p>
           </div>
-        </div>
-        <div class="cocktail-card reveal stagger-4">
-          <img src="images/cocktails/khon-thai.webp" alt="Khon Thai" class="cocktail-card__img" loading="lazy" width="1067" height="1600">
-          <div class="cocktail-card__overlay"></div>
-          <div class="cocktail-card__content">
-            <div class="cocktail-card__name">Khon Thai</div>
-            <div class="cocktail-card__desc">del maguey single village chichicapa mezcal or fortaleza blanco tequila, or a 50/50 blend, with papaya, lime and salted honey</div>
+        </article>
+        <article class="cocktail-card dish-card reveal stagger-4">
+          <img alt="Khon Thai" class="cocktail-card__img dish-card__img" height="1600" loading="lazy" src="images/cocktails/khon-thai.webp" width="1067"/>
+          <div class="cocktail-card__overlay dish-card__overlay"></div>
+          <div class="cocktail-card__content dish-card__content">
+            <h3 class="cocktail-card__name dish-card__name">Khon Thai</h3>
+            <p class="cocktail-card__desc dish-card__desc">del maguey single village chichicapa mezcal or fortaleza blanco tequila, or a 50/50 blend, with papaya, lime and salted honey</p>
           </div>
-        </div>
+        </article>
       </div>
       <div class="menu-preview__cta reveal" style="margin-top:48px;">
         <a href="sura-menu.html" class="btn btn-arrow btn-lg">See Full Menu</a>
@@ -161,36 +162,71 @@
     </div>
   </section>
 
-  <section class="atmosphere" aria-labelledby="sura-atmosphere-heading">
+  <section class="atmosphere events-landing" id="private-events" aria-labelledby="private-events-heading">
     <div class="container">
       <div class="atmosphere__header reveal">
-        <span class="section-subtitle">The Lounge</span>
-        <h2 id="sura-atmosphere-heading">The Sura Atmosphere</h2>
+        <span class="section-subtitle">Receptions &amp; Evening Events</span>
+        <h2 id="private-events-heading">Private Events</h2>
         <div class="gold-line-center" aria-hidden="true"></div>
+        <p>A Thai-inspired cocktail lounge for receptions, holiday parties and evening events.</p>
+      </div>
+      <div aria-label="Sura private event photos" aria-roledescription="carousel" class="atmosphere__carousel event-gallery" role="region">
+        <button aria-label="Previous Sura photos" class="atmosphere__nav atmosphere__nav--prev" type="button"><span aria-hidden="true">←</span></button>
+        <div aria-label="Sura photos — scroll to explore" class="atmosphere__track" tabindex="0">
+          <div class="atmosphere__item"><img alt="Sura lounge with tables and sparkling ceiling lights" height="1200" loading="lazy" src="images/events/sura-dsc00231.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Sura lounge seating and tables arranged for an evening event" height="1200" loading="lazy" src="images/events/sura-dsc00225.webp" width="1800"/></div>
+          <div class="atmosphere__item atmosphere__item--portrait"><img alt="Sura illuminated ceiling and intimate lounge seating" height="1600" loading="lazy" src="images/events/sura-dsc00224.webp" width="1067"/></div>
+          <div class="atmosphere__item"><img alt="Sura table settings beside the softly lit curtains" height="1200" loading="lazy" src="images/events/sura-dsc00226.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Sura banquettes along the illuminated curtain wall" height="1200" loading="lazy" src="images/events/sura-dsc00228.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Sura lounge tables ready for guests" height="1200" loading="lazy" src="images/events/sura-dsc00229.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Sura candlelit table and lounge chairs" height="1200" loading="lazy" src="images/events/sura-dsc00230.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Sura seating areas for private receptions" height="1200" loading="lazy" src="images/events/sura-dsc00233.webp" width="1800"/></div>
+          <div class="atmosphere__item atmosphere__item--portrait"><img alt="A Sura table set with wine glasses and warm table lighting" height="1600" loading="lazy" src="images/events/sura-dsc00242.webp" width="1067"/></div>
+          <div class="atmosphere__item atmosphere__item--portrait"><img alt="Sura intimate seating under the sparkling ceiling" height="1600" loading="lazy" src="images/events/sura-dsc00236.webp" width="1067"/></div>
+          <div class="atmosphere__item"><img alt="Sura table setting with glasses beside the curtain wall" height="1200" loading="lazy" src="images/events/sura-dsc00239.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="A view through Sura across a table set for a private event" height="1200" loading="lazy" src="images/events/sura-dsc00244.webp" width="1800"/></div>
+        </div>
+        <button aria-label="Next Sura photos" class="atmosphere__nav atmosphere__nav--next" type="button"><span aria-hidden="true">→</span></button>
       </div>
     </div>
-    <div class="atmosphere__carousel">
-      <button type="button" class="atmosphere__nav atmosphere__nav--prev" aria-label="Previous photos"><span aria-hidden="true">←</span></button>
-      <div class="atmosphere__track" tabindex="0" aria-label="Sura atmosphere photos — scroll to explore">
-        <div class="atmosphere__item"><img src="images/sura/sura-interior-1.jpg" alt="Sura lounge" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/sura/sura-interior-2.jpg" alt="Sura interior" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/sura/sura-interior-3.jpg" alt="Sura atmosphere" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/sura/sura-interior-4.jpg" alt="Sura room" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/sura/sura-interior-5.jpg" alt="Sura lounge detail" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/sura/sura-interior-6.jpg" alt="Sura interior detail" loading="lazy"></div>
+    <section aria-labelledby="inquiry-heading" class="event-inquiry" id="inquiry">
+      <div class="container event-inquiry__grid">
+        <div class="event-inquiry__copy">
+          <span class="section-subtitle">Your event at Sura</span>
+          <h3 id="inquiry-heading">Send an inquiry</h3>
+          <div aria-hidden="true" class="gold-line"></div>
+          <p>Share your plans for Sura and our team will be in touch to help you with the details.</p>
+          <a class="event-inquiry__email" href="mailto:events@tarrachicago.com">events@tarrachicago.com</a>
+        </div>
+        <form action="https://formsubmit.co/events@tarrachicago.com" aria-labelledby="inquiry-heading" class="event-form" data-endpoint="https://formsubmit.co/ajax/events@tarrachicago.com" data-event-inquiry="" data-venue="Sura" method="POST">
+          <input name="venue" type="hidden" value="Sura"/>
+          <input name="_subject" type="hidden" value="Sura private event inquiry"/>
+          <input name="_template" type="hidden" value="table"/>
+          <div aria-hidden="true" class="event-form__honeypot">
+            <label for="event-website">Leave this field empty</label>
+            <input autocomplete="off" id="event-website" name="_honey" tabindex="-1" type="text"/>
+          </div>
+          <div class="event-form__field">
+            <label for="event-name">Full name <span aria-hidden="true">*</span></label>
+            <input aria-describedby="event-name-error" autocomplete="name" id="event-name" maxlength="120" name="name" required="" type="text"/>
+            <p class="event-form__error" hidden="" id="event-name-error"></p>
+          </div>
+          <div class="event-form__field">
+            <label for="event-phone">Phone number <span aria-hidden="true">*</span></label>
+            <input aria-describedby="event-phone-error" autocomplete="tel" id="event-phone" inputmode="tel" maxlength="40" name="phone" required="" type="tel"/>
+            <p class="event-form__error" hidden="" id="event-phone-error"></p>
+          </div>
+          <div class="event-form__field">
+            <label for="event-message">Message <span>(optional)</span></label>
+            <textarea id="event-message" maxlength="5000" name="message" rows="5"></textarea>
+          </div>
+          <p class="event-form__privacy">We’ll use your details to respond to your event inquiry. <a href="privacy.html">Privacy Policy</a></p>
+          <button class="btn btn-filled" type="submit">Send Inquiry</button>
+          <p aria-atomic="true" aria-live="polite" class="event-form__status" data-inquiry-status="" role="status"></p>
+          <noscript><p>Submitting opens our secure form service. You can also email <a href="mailto:events@tarrachicago.com">events@tarrachicago.com</a>.</p></noscript>
+        </form>
       </div>
-      <button type="button" class="atmosphere__nav atmosphere__nav--next" aria-label="Next photos"><span aria-hidden="true">→</span></button>
-    </div>
-  </section>
-
-  <section class="events-teaser" aria-labelledby="private-events-teaser">
-    <div class="container">
-      <span class="section-subtitle">Receptions &amp; Evening Events</span>
-      <h2 id="private-events-teaser">Private Events</h2>
-      <div class="gold-line-center" aria-hidden="true"></div>
-      <p>A Thai-inspired cocktail lounge for receptions, holiday parties and evening events.</p>
-      <a href="sura-private-events.html" class="btn btn-arrow">Explore Private Events</a>
-    </div>
+    </section>
   </section>
 
 
@@ -227,7 +263,7 @@
         <p>&copy; 2026 Tarra &amp; Sura. All rights reserved.</p>
         <div class="footer__bottom-links">
           <a href="visit.html">Visit Us</a>
-          <a href="sura-private-events.html">Private Events</a>
+          <a href="#private-events">Private Events</a>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
         </div>
@@ -235,5 +271,6 @@
     </div>
   </footer>
   <script src="js/main.js?v=20261028b"></script>
+  <script src="js/events.js?v=20261028b"></script>
 </body>
 </html>

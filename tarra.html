@@ -35,7 +35,8 @@
   <link rel="icon" type="image/png" sizes="192x192" href="https://www.tarrachicago.com/images/logos/site-icon-192.png">
   <link rel="shortcut icon" href="https://www.tarrachicago.com/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="https://www.tarrachicago.com/images/logos/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=20261028c">
+  <link rel="stylesheet" href="css/style.css?v=20261029">
+  <link rel="stylesheet" href="css/events.css?v=20261029">
 </head>
 <body>
 
@@ -57,7 +58,7 @@
         <a href="index.html" class="navbar__link">Home</a>
         <a href="sura.html" class="navbar__link">Sura</a>
         <a href="menu.html" class="navbar__link">Menu</a>
-        <a href="tarra-private-events.html" class="navbar__link">Private Events</a>
+        <a href="#private-events" class="navbar__link">Private Events</a>
       </div>
       <a href="index.html" class="navbar__logo" aria-label="Tarra &amp; Sura home">
         <img src="images/logos/tarra-emblem-white.png" alt="Tarra &amp; Sura" class="navbar__logo-img logo-img logo-img--emblem">
@@ -76,7 +77,7 @@
       <a href="gallery.html">Gallery</a>
       <a href="team.html">Team</a>
       <a href="https://www.opentable.com/r/tarra-chicago?ref=1068" target="_blank" rel="noopener noreferrer">Reserve a Table</a>
-      <a href="tarra-private-events.html">Private Events</a>
+      <a href="#private-events">Private Events</a>
     </div>
   </nav>
 
@@ -193,38 +194,67 @@
     </div>
   </section>
 
-  <!-- ═══ ATMOSPHERE ═══ -->
-  <section class="atmosphere" aria-labelledby="atmosphere-heading">
+  <!-- ═══ PRIVATE EVENTS ═══ -->
+  <section class="atmosphere events-landing" id="private-events" aria-labelledby="private-events-heading">
     <div class="container">
       <div class="atmosphere__header reveal">
-        <span class="section-subtitle">Experience</span>
-        <h2 id="atmosphere-heading">The Atmosphere</h2>
+        <span class="section-subtitle">Private Dinners &amp; Celebrations</span>
+        <h2 id="private-events-heading">Private Events</h2>
         <div class="gold-line-center" aria-hidden="true"></div>
+        <p>Contemporary Thai dining for private dinners, celebrations and corporate gatherings.</p>
+      </div>
+      <div aria-label="Tarra private event photos" aria-roledescription="carousel" class="atmosphere__carousel event-gallery" role="region">
+        <button aria-label="Previous Tarra photos" class="atmosphere__nav atmosphere__nav--prev" type="button"><span aria-hidden="true">←</span></button>
+        <div aria-label="Tarra photos — scroll to explore" class="atmosphere__track" tabindex="0">
+          <div class="atmosphere__item"><img alt="Tarra bar and dining room beneath the sculpted gold ceiling" height="1200" loading="lazy" src="images/events/tarra-dsc09094.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Tarra dining room with tables arranged for a private gathering" height="1200" loading="lazy" src="images/events/tarra-dsc09097.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Tarra curved banquettes and tables along the textured wall" height="1200" loading="lazy" src="images/events/tarra-dsc09100.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Tarra tables set beneath the circular ceiling lights" height="1200" loading="lazy" src="images/events/tarra-dsc09103.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Tarra dining room with palms and warm pendant lighting" height="1200" loading="lazy" src="images/events/tarra-dsc09107.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="Tarra banquette seating for a private dinner" height="1200" loading="lazy" src="images/events/tarra-dsc09109.webp" width="1800"/></div>
+          <div class="atmosphere__item"><img alt="A view across the Tarra dining room toward the bar" height="1200" loading="lazy" src="images/events/tarra-dsc09680.webp" width="1800"/></div>
+        </div>
+        <button aria-label="Next Tarra photos" class="atmosphere__nav atmosphere__nav--next" type="button"><span aria-hidden="true">→</span></button>
       </div>
     </div>
-    <div class="atmosphere__carousel">
-      <button type="button" class="atmosphere__nav atmosphere__nav--prev" aria-label="Previous photos"><span aria-hidden="true">←</span></button>
-      <div class="atmosphere__track" tabindex="0" aria-label="Tarra atmosphere photos — scroll to explore">
-        <div class="atmosphere__item"><img src="images/tarra/tarra-interior-1.jpg" alt="Tarra dining room" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/tarra/tarra-interior-3.jpg" alt="Tarra interior" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/tarra/tarra-interior-4.jpg" alt="Tarra presentation" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/tarra/tarra-interior-5.jpg" alt="Tarra room" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/tarra/tarra-interior-6.jpg" alt="Tarra atmosphere" loading="lazy"></div>
-        <div class="atmosphere__item"><img src="images/tarra/tarra-interior-7.jpg" alt="Tarra interior detail" loading="lazy"></div>
+    <section aria-labelledby="inquiry-heading" class="event-inquiry" id="inquiry">
+      <div class="container event-inquiry__grid">
+        <div class="event-inquiry__copy">
+          <span class="section-subtitle">Your event at Tarra</span>
+          <h3 id="inquiry-heading">Send an inquiry</h3>
+          <div aria-hidden="true" class="gold-line"></div>
+          <p>Share your plans for Tarra and our team will be in touch to help you with the details.</p>
+          <a class="event-inquiry__email" href="mailto:events@tarrachicago.com">events@tarrachicago.com</a>
+        </div>
+        <form action="https://formsubmit.co/events@tarrachicago.com" aria-labelledby="inquiry-heading" class="event-form" data-endpoint="https://formsubmit.co/ajax/events@tarrachicago.com" data-event-inquiry="" data-venue="Tarra" method="POST">
+          <input name="venue" type="hidden" value="Tarra"/>
+          <input name="_subject" type="hidden" value="Tarra private event inquiry"/>
+          <input name="_template" type="hidden" value="table"/>
+          <div aria-hidden="true" class="event-form__honeypot">
+            <label for="event-website">Leave this field empty</label>
+            <input autocomplete="off" id="event-website" name="_honey" tabindex="-1" type="text"/>
+          </div>
+          <div class="event-form__field">
+            <label for="event-name">Full name <span aria-hidden="true">*</span></label>
+            <input aria-describedby="event-name-error" autocomplete="name" id="event-name" maxlength="120" name="name" required="" type="text"/>
+            <p class="event-form__error" hidden="" id="event-name-error"></p>
+          </div>
+          <div class="event-form__field">
+            <label for="event-phone">Phone number <span aria-hidden="true">*</span></label>
+            <input aria-describedby="event-phone-error" autocomplete="tel" id="event-phone" inputmode="tel" maxlength="40" name="phone" required="" type="tel"/>
+            <p class="event-form__error" hidden="" id="event-phone-error"></p>
+          </div>
+          <div class="event-form__field">
+            <label for="event-message">Message <span>(optional)</span></label>
+            <textarea id="event-message" maxlength="5000" name="message" rows="5"></textarea>
+          </div>
+          <p class="event-form__privacy">We’ll use your details to respond to your event inquiry. <a href="privacy.html">Privacy Policy</a></p>
+          <button class="btn btn-filled" type="submit">Send Inquiry</button>
+          <p aria-atomic="true" aria-live="polite" class="event-form__status" data-inquiry-status="" role="status"></p>
+          <noscript><p>Submitting opens our secure form service. You can also email <a href="mailto:events@tarrachicago.com">events@tarrachicago.com</a>.</p></noscript>
+        </form>
       </div>
-      <button type="button" class="atmosphere__nav atmosphere__nav--next" aria-label="Next photos"><span aria-hidden="true">→</span></button>
-    </div>
-  </section>
-
-  <!-- ═══ FOOTER ═══ -->
-  <section class="events-teaser" aria-labelledby="private-events-teaser">
-    <div class="container">
-      <span class="section-subtitle">Private Dinners &amp; Celebrations</span>
-      <h2 id="private-events-teaser">Private Events</h2>
-      <div class="gold-line-center" aria-hidden="true"></div>
-      <p>Contemporary Thai dining for private dinners, celebrations and corporate gatherings.</p>
-      <a href="tarra-private-events.html" class="btn btn-arrow">Explore Private Events</a>
-    </div>
+    </section>
   </section>
 
 
@@ -261,7 +291,7 @@
         <p>&copy; 2026 Tarra &amp; Sura. All rights reserved.</p>
         <div class="footer__bottom-links">
           <a href="visit.html">Visit Us</a>
-          <a href="tarra-private-events.html">Private Events</a>
+          <a href="#private-events">Private Events</a>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
           <a href="https://forms.gle/FpJchGt4PNV8JtMm8" target="_blank" rel="noopener noreferrer">Join the Team</a>
@@ -282,5 +312,6 @@
   </div>
 
   <script src="js/main.js?v=20261028b"></script>
+  <script src="js/events.js?v=20261028b"></script>
 </body>
 </html>

@@ -990,25 +990,22 @@ p { color:var(--white-soft); font-size:1rem; line-height:1.9; }
 
 .cocktails { padding:var(--section-pad); }
 .cocktails__header { text-align:center; margin-bottom:80px; }
-.cocktails__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+.cocktails__grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; max-width:1000px; margin:0 auto; }
 
-.cocktail-card { position:relative; overflow:hidden; }
+.cocktail-card { display:grid; align-items:end; aspect-ratio:auto; cursor:default; }
+.cocktail-card::before { content:''; grid-area:1 / 1; padding-top:133.333%; }
 .cocktail-card__img {
-  width:100%; height:auto; aspect-ratio:2/3; object-fit:cover;
-  transition: transform 0.7s var(--ease), filter 0.5s ease;
-  filter:brightness(0.95);
+  position:absolute; inset:0;
 }
-.cocktail-card:hover .cocktail-card__img { transform:scale(1.06); filter:brightness(1); }
 .cocktail-card__overlay {
-  display: none;
+  background:linear-gradient(180deg, transparent 25%, rgba(6,6,6,0.35) 48%, rgba(6,6,6,0.95) 100%);
 }
-.cocktail-card::after {
-  content: none;
+.cocktail-card__content {
+  /* Keep the copy in flow so larger text can grow the card without clipping. */
+  position:relative; grid-area:1 / 1; margin-top:200px; transform:none;
+  background:linear-gradient(180deg, transparent, rgba(6,6,6,0.55) 48px, rgba(6,6,6,0.8));
 }
-.cocktail-card__content { position:relative; padding:24px 0 0; }
-.cocktail-card__name { font-family:var(--font-heading); font-size:1.3rem; color:var(--white); text-shadow: 0 1px 14px rgba(0,0,0,0.55); }
-.cocktail-card__price { color:var(--gold); font-size:0.9rem; margin-top:4px; }
-.cocktail-card__desc { font-size:0.8rem; color:var(--white-soft); margin-top:12px; line-height:1.8; }
+.cocktail-card__desc { margin-top:12px; line-height:1.8; opacity:1; }
 .cocktail-card:hover .cocktail-card__desc { opacity:1; }
 
 .events { padding:var(--section-pad); background:var(--bg-alt); }
@@ -2407,8 +2404,8 @@ a.experience-card { text-decoration: none; color: inherit; }
   .split-panel:hover { flex: 1; }
   .split-panel__enter { opacity: 0.7; transform: none; }
   .dish-card__content { transform: translateY(0); }
-  .dish-card__desc,
-  .cocktail-card__desc { opacity: 0.85; }
+  .dish-card__desc { opacity: 0.85; }
+  .cocktail-card__desc { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
